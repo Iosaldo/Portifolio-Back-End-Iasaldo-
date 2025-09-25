@@ -1,5 +1,5 @@
 // src/app/layout.js
-import { Stack } from "@mui/material";
+import { Avatar, Stack } from "@mui/material";
 import "./globals.css";
 import Link from "next/link";
 import * as React from 'react';
@@ -20,13 +20,14 @@ export default function RootLayout({ children }) {
     <Link href="/about">Sobre</Link>
     <Link href="/contact">Contact</Link>
     <Link href="/dashboard">Dashboard</Link>
+    <Avatar alt="Iasaldo" src="/favicon.ico" sx={{ width: 24, height: 25 }} />
   </nav>
 </header>
 
         {/* Conteúdo das páginas */}
         <main style={{ padding: "1rem" }}>{children}</main>
 
-        {/* Footer global */}
+        {/* Barra de rodapé */}
         <footer style={{ background: "#eee", padding: "1rem", marginTop: "2rem" }}>
           <p>© 2025 - Iasaldo</p>
         </footer>
