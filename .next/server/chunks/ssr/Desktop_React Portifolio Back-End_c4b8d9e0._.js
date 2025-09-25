@@ -11,6 +11,9 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/React Portifolio Back-End/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/React Portifolio Back-End/node_modules/next/dist/client/app-dir/link.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/React Portifolio Back-End/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react.js [app-rsc] (ecmascript)");
+;
+;
 ;
 ;
 ;
@@ -40,42 +43,42 @@ function RootLayout({ children }) {
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                                lineNumber: 17,
-                                columnNumber: 13
+                                lineNumber: 19,
+                                columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/about",
                                 children: "Sobre"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                                lineNumber: 18,
-                                columnNumber: 13
+                                lineNumber: 20,
+                                columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/contact",
-                                children: "Contato"
+                                children: "Contact"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                                lineNumber: 19,
-                                columnNumber: 13
+                                lineNumber: 21,
+                                columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/dashboard",
                                 children: "Dashboard"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                                lineNumber: 20,
-                                columnNumber: 13
+                                lineNumber: 22,
+                                columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                        lineNumber: 16,
-                        columnNumber: 11
+                        lineNumber: 18,
+                        columnNumber: 3
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                    lineNumber: 15,
+                    lineNumber: 17,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -85,7 +88,7 @@ function RootLayout({ children }) {
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                    lineNumber: 25,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -95,26 +98,26 @@ function RootLayout({ children }) {
                         marginTop: "2rem"
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$React__Portifolio__Back$2d$End$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        children: "© 2025 - Meu Projeto"
+                        children: "© 2025 - Iasaldo"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                        lineNumber: 29,
+                        lineNumber: 31,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-                    lineNumber: 28,
+                    lineNumber: 30,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-            lineNumber: 13,
+            lineNumber: 15,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/React Portifolio Back-End/src/app/layout.js",
-        lineNumber: 12,
+        lineNumber: 14,
         columnNumber: 5
     }, this);
 }
