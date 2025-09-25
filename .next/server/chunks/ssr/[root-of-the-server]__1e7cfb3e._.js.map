@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["file:///Users/skinpro/Desktop/React%20Portifolio%20Back-End/src/app/page.js"],"sourcesContent":["import Image from \"next/image\";\nimport React from \"react\";\nimport Button from \"@mui/material/Button\";\nimport { Card } from \"@mui/material\";\nimport { CardContent } from \"@mui/material\";\nimport { render } from \"express/lib/response\";\n\nfunction MyButton() {\n  return <Button variant=\"contained\">Click Me</Button>;\n}\n\n"],"names":[],"mappings":";;AAAA;AACA;AACA;AAGA;;;;;;;;AAEA,SAAS;IACP,qBAAO,2RAAC,oNAAM;QAAC,SAAQ;kBAAY;;;;;;AACrC","debugId":null}}]
+}
