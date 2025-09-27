@@ -2,5 +2,6 @@
   "/about/page": "app/about/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/projectos/page": "app/projectos/page.js"
 }
