@@ -14,10 +14,10 @@ export default function DashboardPage() {
         transition={{ duration: 0.6 }}
         className="text-3xl font-bold mb-8 text-foreground"
       >
-        Estatísticas de Linguagens
+      Estatísticas de Linguagens
       </motion.h1>
 
-      {/* Ícones com percentagens */}
+       {/* Ícones com percentagens */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -32,6 +32,8 @@ export default function DashboardPage() {
         <BarChartCard />
         <PieChartCard />
       </div>
+
+
     </div>
   );
 }

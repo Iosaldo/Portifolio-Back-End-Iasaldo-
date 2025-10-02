@@ -1,17 +1,38 @@
 "use client";
+import { BiLogoPostgresql } from "react-icons/bi";
 
-import { SiPython, SiJavascript } from "react-icons/si";
-import { FaJava } from "react-icons/fa"; // Importa FaJava da coleção Font Awesome
+import { SiPython, SiJavascript, SiNextdotjs, SiExpress } from "react-icons/si";
+import { FaGit, FaGithub, FaJava, FaReact } from "react-icons/fa"; // Importa FaJava da coleção Font Awesome
 import "./icons.css";
 
 const languages = [
-  {
-    name: "Python",
-    icon: SiPython,
+    {
+      name: "Express",
+    icon: SiExpress,
     color: "#3776AB",
     pratica: 72,
     logica: 65,
-    exame: 80,
+  },
+    {
+      name: "Next",
+    icon: SiNextdotjs,
+    color: "#000000ff",
+    pratica: 72,
+    logica: 65,
+  },
+  {
+    name: "Postgresql",
+    icon: BiLogoPostgresql,
+    color: "#3776AB",
+    pratica: 72,
+    logica: 65,
+  },
+  {
+    name: "GitHub",
+    icon: FaGithub,
+    color: "#0a0d0fff",
+    pratica: 72,
+    logica: 65,
   },
   {
     name: "JavaScript",
@@ -19,15 +40,13 @@ const languages = [
     color: "#F7DF1E",
     pratica: 60,
     logica: 55,
-    exame: 70,
   },
   {
-    name: "Java",
-    icon: FaJava,
-    color: "#f89820",
+    name: "React",
+    icon: FaReact,
+    color: "#1900ffff",
     pratica: 68,
     logica: 62,
-    exame: 75,
   },
 ];
 
@@ -50,7 +69,6 @@ export default function LanguageIcons() {
               <br />
               🟦 Prática: {lang.pratica}%<br />
               🟧 Lógica: {lang.logica}%<br />
-              🟩 Exame: {lang.exame}%
             </div>
           </li>
         );

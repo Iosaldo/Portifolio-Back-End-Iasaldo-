@@ -12,9 +12,9 @@ import {
 import { motion } from "framer-motion";
 
 const data = [
-  { linguagem: "Python", exame_pct: 80 },
-  { linguagem: "JavaScript", exame_pct: 70 },
-  { linguagem: "Java", exame_pct: 75 },
+  { linguagem: "Software Engineering Foundations", exame_pct: 85 },
+  { linguagem: "Back-End Development", exame_pct: 70 },
+  { linguagem: "Advanced Back-End Development", exame_pct: 0o0 },
 ];
 
 const COLORS = ["#3b82f6", "#f97316", "#10b981"];
@@ -24,7 +24,7 @@ export default function PieChartCard() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
+      transition={{ duration: 0.8, delay: 0.4 }} // Adicionado delay para escalonar a animação
     >
       <Card className="shadow-lg rounded-2xl">
         <CardHeader>
@@ -43,7 +43,10 @@ export default function PieChartCard() {
                 label
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
               </Pie>
               <Tooltip />

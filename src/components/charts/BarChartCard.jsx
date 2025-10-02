@@ -14,9 +14,9 @@ import {
 import { motion } from "framer-motion";
 
 const data = [
-  { linguagem: "Python", pratica_pct: 72, logica_pct: 65 },
-  { linguagem: "JavaScript", pratica_pct: 92, logica_pct: 79 },
-  { linguagem: "Java", pratica_pct: 68, logica_pct: 62 },
+  { linguagem: "Software Engineering Foundations", pratica_pct: 72, logica_pct: 65 },
+  { linguagem: "Back-End Development", pratica_pct: 92, logica_pct: 79 },
+  { linguagem: "Advanced Back-End Development", pratica_pct: 0o0, logica_pct: 0o0 },
 ];
 
 export default function BarChartCard() {
