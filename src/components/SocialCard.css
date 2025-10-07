@@ -1,6 +1,12 @@
-/* From Uiverse.io by wilsondesouza */
+/* Social Media Icons */
 ul {
   list-style: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 .example-2 {
@@ -15,8 +21,10 @@ ul {
 .example-2 .icon-content .tooltip {
   position: absolute;
   top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  display: block; /* evita whitespace e redimensionamento inesperado */
+  transition: transform 200ms ease;
   color: #fff;
   padding: 6px 10px;
   border-radius: 5px;
@@ -24,19 +32,17 @@ ul {
   visibility: hidden;
   font-size: 14px;
   transition: all 0.3s ease;
-}
-.example-2 .icon-content:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  top: -50px;
-}
-.example-2 .icon-content a {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    inset: 0; 
+    background-color: #000;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 300ms ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    transform: scaleY(1);
+  }
   height: 50px;
   border-radius: 50%;
   color: #4d4d4d;

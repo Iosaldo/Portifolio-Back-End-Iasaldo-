@@ -1,6 +1,5 @@
 {
   "/RestaurantePage/page": "app/RestaurantePage/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/about/page": "app/about/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
