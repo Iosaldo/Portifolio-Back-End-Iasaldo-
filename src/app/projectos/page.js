@@ -1,4 +1,5 @@
 import React from "react";
+import "./projectos.css";
 import {
   Box,
   Card,
@@ -17,65 +18,39 @@ function ProjectoAderitoCard() {
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          image="/aderito-projecto.jpg"
+          alt="Adérito Projecto"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Adérito Projecto
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            O Learn English Aderito é uma plataforma digital de ensino de
+            inglês, voltada para falantes de português, com foco em aprendizagem
+            prática, personalizada e acessível.
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Saber Mais
         </Button>
       </CardActions>
     </Card>
   );
 }
 
-export default function projectospage() {
+export default function ProjectosPage() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: 3,
-        alignItems: "flex-start",
-        flexWrap: "wrap",
-      }}
-    >
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-        </CardActions>
-      </Card>
-
-      {/* Card à direita */}
-      <ProjectoAderitoCard />
-    </Box>
+    <main className="projectos-page">
+      <Typography variant="h4" component="h1" gutterBottom>
+        Projectos
+      </Typography>
+      <Box className="projectos-grid">
+        <ProjectoAderitoCard />
+        {/* Adicione outros project cards aqui */}
+      </Box>
+    </main>
   );
 }
