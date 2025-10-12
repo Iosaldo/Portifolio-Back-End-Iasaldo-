@@ -1,6 +1,7 @@
 "use client";
 // src/app/RestaurantePage/page.js
 import React, { useState } from "react";
+import Image from 'next/image';
 import { motion } from "framer-motion";
 import { FiLinkedin } from "react-icons/fi";
 import { useRouter } from "next/navigation";
@@ -73,10 +74,13 @@ export default function RestaurantePage() {
           <div className="hero-head">
             <h1 className="resto-title atop">Iyosaldo Batista</h1>
             {/* Avatar central abaixo do título (title sobreposto) */}
-            <img
+            <Image
               src="/avatar.jpg"
               alt="Avatar Iyosaldo"
               className="avatar resto-avatar"
+              width={128}
+              height={128}
+              priority={true}
             />
           </div>
           <p className="resto-subtitle">
