@@ -22,7 +22,7 @@ function AppContent({ children }) {
     .startsWith("/restaurantepage");
 
   return (
-    <html lang="pt, eng" className={isDarkMode ? "dark" : "light"}>
+    <html lang="pt-BR" className={isDarkMode ? "dark" : "light"}>
       <body>
         {/* Barra de navegação global (oculta na página Restaurante) */}
         {!isRestaurante && (

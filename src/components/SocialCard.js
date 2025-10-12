@@ -5,9 +5,11 @@ export default function SocialCard() {
     <ul className="example-2">
       <li className="icon-content">
         <a
-          href="www.linkedin.com/in/iasaldo-batista"
+          href="https://www.linkedin.com/in/iasaldo-batista"
           aria-label="LinkedIn"
           data-social="linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="filled"></div>
           <svg
@@ -32,6 +34,8 @@ export default function SocialCard() {
           href="https://www.github.com/"
           aria-label="GitHub"
           data-social="github"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="filled"></div>
           <svg
@@ -56,6 +60,8 @@ export default function SocialCard() {
           href="https://www.instagram.com/"
           aria-label="Instagram"
           data-social="instagram"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="filled"></div>
           <svg
