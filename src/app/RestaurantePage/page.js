@@ -1,7 +1,7 @@
 "use client";
 // src/app/RestaurantePage/page.js
 import React, { useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiLinkedin } from "react-icons/fi";
 import { useRouter } from "next/navigation";
