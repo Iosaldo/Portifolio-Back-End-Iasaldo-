@@ -2,72 +2,199 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
 .icon-content {
   position: relative;
   display: inline-block;
   text-align: center;
+  margin: 0 10px;
+}
+
+/* Semantic aliases to gradually remove utility classes from markup */
+.language-list {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.language-item {
+  display: inline-block;
+  margin: 0 10px;
 }
 
 .icon-content a {
   position: relative;
-  width: 50px;
-  height: 50px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #444;
-  background: #fff;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: #4d4d4d;
+  cursor: pointer;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 220ms ease, color 200ms ease;
+  will-change: transform, box-shadow;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .icon-content .filled {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: all 0.3s ease;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 200ms ease;
   z-index: 0;
 }
 
-.icon-content svg {
+.icon-content a svg {
   position: relative;
   z-index: 1;
-  transition: color 0.3s ease;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1), color 200ms ease;
+  width: 30px;
+  height: 30px;
 }
 
 .icon-content a:hover .filled {
-  transform: scale(1);
+  transform: scaleY(1);
 }
 
 .icon-content a:hover svg {
-  color: #fff;
+  transform: translateY(2px) scale(1.08);
 }
 
-.tooltip {
+.icon-content a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* keyboard focus accessibility */
+.icon-content a:focus-visible {
+  outline: 2px solid var(--foreground, #eb5e28);
+  outline-offset: 4px;
+}
+
+.example-2 .icon-content .tooltip {
   position: absolute;
-  bottom: -85px;
+  top: -44px;
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 10px;
-  border-radius: 8px;
-  background: #333;
-  color: #fff;
-  font-size: 12px;
-  line-height: 1.3;
+  border-radius: 6px;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, bottom 0.3s ease;
-  white-space: nowrap;
-  min-width: 130px;
-  text-align: left;
+  visibility: hidden;
+  color: #fff;
+  font-size: 14px;
+  transition: opacity 0.26s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.26s cubic-bezier(0.2, 0.9, 0.2, 1), visibility 0.26s;
+  z-index: 5; /* garantir que o tooltip fique acima do .filled */
+  /* Subtle 'glass' background instead of solid black. Data-social variants or --lang-color will override when present. */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px) saturate(120%);
+  white-space: nowrap; /* manter o tooltip em uma linha como no snippet */
 }
 
-.icon-content:hover .tooltip {
+.example-2 .icon-content:hover .tooltip {
   opacity: 1;
-  bottom: -100px;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-28px);
+}
+
+/* Tooltip content improvements */
+.example-2 .tooltip-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.example-2 .tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0;
+}
+.example-2 .badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.example-2 .badge.practice {
+  background: #3b82f6; /* azul */
+}
+.example-2 .badge.logic {
+  background: #f97316; /* laranja */
+}
+.example-2 .tooltip-text {
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+/* data-social color variants (fall back to inline filled style) */
+.example-2 .icon-content a[data-social="whatsapp"] .filled,
+.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
+  background-color: #128c7e;
+}
+
+.example-2 .icon-content a[data-social="facebook"] .filled,
+.example-2 .icon-content a[data-social="facebook"] ~ .tooltip {
+  background-color: #3b5998;
+}
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f
+  );
+}
+.example-2 .icon-content a[data-social="youtube"] .filled,
+.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+  background-color: #ff0000;
+}
+
+/* Use --lang-color if provided (set inline on li) */
+.example-2 .icon-content[style*="--lang-color"] .filled {
+  background-color: var(--lang-color);
+}
+.example-2 .icon-content[style*="--lang-color"] .tooltip {
+  /* Use a subtle translucent overlay of the language color for tooltip background on hover */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--lang-color) 20%,
+    rgba(255, 255, 255, 0.06)
+  );
+}
+
+/* Ensure svg color uses currentColor and switches to white when hovered */
+.example-2 .icon-content a svg {
+  color: inherit;
+}
+.example-2 .icon-content a:hover svg {
+  color: #fff;
 }

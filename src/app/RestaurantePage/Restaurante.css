@@ -112,6 +112,28 @@
   margin: 0; /* remove padding excessivo que desalinhava o header */
 }
 
+/* wrapper que posiciona o título sobre o avatar */
+.hero-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resto-title.atop {
+  position: absolute;
+  top: 8px; /* pequeno deslocamento para ficar sobre o avatar */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none; /* não atrapalha cliques no avatar/link */
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.resto-avatar {
+  margin-top: 26px; /* espaço para o título sobreposto */
+}
+
 .resto-subtitle {
   text-align: center;
   opacity: 0.9;
@@ -145,6 +167,17 @@
 .resto-link-icon {
   width: 1.1em;
   height: 1.1em;
+}
+
+/* Avatar central do header */
+.resto-avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 0.6rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border: 3px solid color-mix(in oklab, var(--foreground) 14%, transparent);
 }
 
 .resto-link:hover {

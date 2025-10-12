@@ -1,0 +1,16 @@
+node_modules
+.next
+dist
+build
+npm-debug.log
+.env
+.env.local
+.env.*.local
+Dockerfile
+.git
+**/node_modules
+yarn.lock
+pnpm-lock.yaml
+coverage
+.vscode
+*.local

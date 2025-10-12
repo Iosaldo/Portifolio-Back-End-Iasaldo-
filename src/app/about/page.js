@@ -1,3 +1,4 @@
+import "./about.css";
 import SocialCard from "@/components/SocialCard";
 import Avatar from "@mui/material/Avatar";
 import {
@@ -10,7 +11,7 @@ import {
 export default function AboutPage() {
   return (
     <main className="about-page">
-      <div className="flex flex-col items-center">
+      <div className="about-container">
         <Avatar
           alt="Iasaldo"
           src="/avatar.jpg"
@@ -21,7 +22,7 @@ export default function AboutPage() {
           }}
           className="avatar"
         />
-        <div className="container mx-auto p-4 text-center">
+        <div className="about-social-container">
           <SocialCard />
         </div>
       </div>

@@ -26,11 +26,11 @@ export default function PieChartCard() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }} // Adicionado delay para escalonar a animação
     >
-      <Card className="shadow-lg rounded-2xl">
+      <Card className="chart-card">
         <CardHeader>
           <CardTitle>Percentagem de Exame por Linguagem</CardTitle>
         </CardHeader>
-        <CardContent className="h-[350px]">
+        <CardContent className="chart-card-content">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie

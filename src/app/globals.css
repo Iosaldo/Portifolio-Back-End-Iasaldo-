@@ -1,27 +1,122 @@
 @import url("https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap");
-@import "tailwindcss";
 
+/* --- Tailwind shim: minimal utility classes used by the markup --- */
+/* Layout */
+.flex {
+  display: flex !important;
+}
+.flex-col {
+  flex-direction: column !important;
+}
+.items-center {
+  align-items: center !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+.w-full {
+  width: 100% !important;
+}
+.min-h-screen {
+  min-height: 100vh !important;
+}
+.text-center {
+  text-align: center !important;
+}
+
+/* Spacing (approximate to Tailwind scale) */
+.p-24 {
+  padding: 6rem !important;
+}
+.p-8 {
+  padding: 2rem !important;
+}
+.p-4 {
+  padding: 1rem !important;
+}
+.gap-6 {
+  gap: 1.5rem !important;
+}
+.mb-16 {
+  margin-bottom: 4rem !important;
+}
+
+/* Width / max-width */
+.max-w-5xl {
+  max-width: 64rem !important;
+}
+
+/* Z-index */
+.z-10 {
+  z-index: 10 !important;
+}
+
+/* Utility display helpers */
+.grid {
+  display: grid !important;
+}
+.grid-cols-1 {
+  grid-template-columns: 1fr !important;
+}
+
+/* Small helpers used in a few places */
+.mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+.text-3xl {
+  font-size: 1.875rem !important;
+  font-weight: 700 !important;
+}
+.font-bold {
+  font-weight: 700 !important;
+}
+.rounded-2xl {
+  border-radius: 1rem !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Responsive helpers: minimal using media queries for md: prefix (>=768px) */
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* A few bracket-style classes used in code (escaped) */
+.h-\[350px\] {
+  height: 350px !important;
+}
+
+/* Theme variables and global body background */
 :root {
-  --background: #ededed;
-  --foreground: #eb5e28; /* Cor principal do texto */
+  --background: #000000;
+  --foreground: #eb5e28; /* cor principal */
 }
 
 html.dark {
   --background: #0a0a0a;
-  --foreground: #ededed; /* Mantém o contraste no modo escuro */
+  --foreground: #ededed;
 }
 
+/* Body and transitions */
 body {
-  background: linear-gradient(
-    135deg,
-    #000000 0%,
-    #5c5770 50%,
-    #4b3d58 100%
-  ); /* Gradiente com as cores fornecidas */
+  background: linear-gradient(135deg, #000000 10%, #5c5770 50%, #4b3d58 30%);
   color: var(--foreground);
-  font-family: "Andada Pro", serif !important; /* Aplica a fonte Andada Pro com !important */
+  font-family: "Andada Pro", serif !important;
+  transition: background 0.55s ease, color 0.55s ease;
 }
 
+html.dark body {
+  background: linear-gradient(135deg, #030203 0%, #382f3d 100%, #281c2a 100%);
+  color: var(--foreground);
+}
+
+/* Botões utilitários */
 .custom-button {
   color: var(--foreground) !important;
   font-weight: 500 !important;
@@ -31,31 +126,29 @@ body {
   transition: all 0.3s ease !important;
   text-transform: none !important;
 }
-
 .custom-button:hover {
-  background-color: rgba(255, 252, 242) !important;
   transform: translateY(-2px);
 }
+
+/* Avatar */
 .avatar {
   border-radius: 50%;
   box-shadow: 0 4px 20px rgba(235, 94, 40, 0.15);
   transition: transform 0.3s ease;
 }
-
 .avatar:hover {
   transform: scale(1.3);
 }
 
+/* Card stack */
 .card-stack {
   display: flex;
   flex-direction: column;
-  gap: 4rem; /* Aumentado para dar mais espaço entre os cards */
+  gap: 4rem;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
-
-/* Espaçamento um pouco maior em telas largas */
 @media (min-width: 1024px) {
   .card-stack {
     gap: 5rem;
@@ -67,37 +160,33 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   backdrop-filter: blur(10px);
-  transform-origin: center;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
-
 .stack-card:hover {
   transform: translateY(-5px) scale(1.02);
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--foreground);
   box-shadow: 0 8px 30px rgba(235, 94, 40, 0.15);
 }
-
 .stack-title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--foreground);
 }
-
 .stack-content {
   opacity: 0.9;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
-
 .stack-card:hover .stack-content {
   opacity: 1;
 }
 
+/* Accordion animation */
 @keyframes accordion-down {
   from {
     height: 0;
@@ -106,7 +195,6 @@ body {
     height: var(--radix-accordion-content-height);
   }
 }
-
 @keyframes accordion-up {
   from {
     height: var(--radix-accordion-content-height);
@@ -115,16 +203,14 @@ body {
     height: 0;
   }
 }
-
 .animate-accordion-down {
   animation: accordion-down 0.2s ease-out;
 }
-
 .animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
 }
 
-/* Estilo para o card Sobre Mim  */
+/* About card */
 .about-card {
   box-sizing: border-box;
   background: rgba(217, 217, 217, 0.08);
@@ -145,15 +231,10 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
 .about-card:hover {
   border: 1px solid var(--foreground);
   transform: scale(1.13);
   box-shadow: 12px 17px 51px rgba(235, 94, 40, 0.2);
-}
-
-.about-card:active {
-  transform: scale(2) rotateZ(1.7deg);
 }
 
 .h1 {
@@ -161,19 +242,8 @@ body {
   font-weight: bold;
   margin-bottom: 1rem;
 }
-/* Estilo para o botão de download */
-.Btn {
-  position: relative;
-  display: inline-block;
-  background: #fff;
-  color: var(--foreground);
-  border: 1px solid var(--foreground);
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-} 
-/* Estilo para o botão de download */
+
+/* Btn (unificado) */
 .Btn {
   width: 50px;
   height: 50px;
@@ -181,7 +251,6 @@ body {
   border-radius: 50%;
   background-color: rgb(27, 27, 27);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -189,11 +258,16 @@ body {
   transition-duration: 0.3s;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
 }
-
-.svgIcon {
+.Btn:hover {
+  background-color: rgb(150, 94, 255);
+}
+.Btn .svgIcon {
   fill: rgb(214, 178, 255);
 }
-
+.Btn:hover .svgIcon {
+  fill: #fff;
+  animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 .icon2 {
   width: 18px;
   height: 5px;
@@ -201,13 +275,15 @@ body {
   border-left: 2px solid rgb(182, 143, 255);
   border-right: 2px solid rgb(182, 143, 255);
 }
-
+.Btn:hover .icon2 {
+  border-color: #ebebeb;
+}
 .tooltip {
   position: absolute;
   right: -105px;
   opacity: 0;
-  background-color: rgb(12, 12, 12);
-  color: white;
+  background: #0c0c0c;
+  color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
@@ -217,39 +293,17 @@ body {
   pointer-events: none;
   letter-spacing: 0.5px;
 }
-
 .tooltip::before {
-  position: absolute;
   content: "";
+  position: absolute;
   width: 10px;
   height: 10px;
-  background-color: rgb(12, 12, 12);
-  background-size: 1000%;
-  background-position: center;
+  background: #0c0c0c;
   transform: rotate(45deg);
   left: -5%;
-  transition-duration: 0.3s;
 }
-
 .Btn:hover .tooltip {
   opacity: 1;
-  transition-duration: 0.3s;
-}
-
-.Btn:hover {
-  background-color: rgb(150, 94, 255);
-  transition-duration: 0.3s;
-}
-
-.Btn:hover .icon2 {
-  border-bottom: 2px solid rgb(235, 235, 235);
-  border-left: 2px solid rgb(235, 235, 235);
-  border-right: 2px solid rgb(235, 235, 235);
-}
-
-.Btn:hover .svgIcon {
-  fill: rgb(255, 255, 255);
-  animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @keyframes slide-in-top {
@@ -257,118 +311,23 @@ body {
     transform: translateY(-10px);
     opacity: 0;
   }
-
   100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-.Btn {
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 50%;
-  background-color: rgb(27, 27, 27);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  transition-duration: 0.3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
-}
-
-.svgIcon {
-  fill: rgb(214, 178, 255);
-}
-
-.icon2 {
-  width: 18px;
-  height: 5px;
-  border-bottom: 2px solid rgb(182, 143, 255);
-  border-left: 2px solid rgb(182, 143, 255);
-  border-right: 2px solid rgb(182, 143, 255);
-}
-
-.tooltip {
-  position: absolute;
-  right: -105px;
-  opacity: 0;
-  background-color: rgb(12, 12, 12);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.2s;
-  pointer-events: none;
-  letter-spacing: 0.5px;
-}
-
-.tooltip::before {
-  position: absolute;
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: rgb(12, 12, 12);
-  background-size: 1000%;
-  background-position: center;
-  transform: rotate(45deg);
-  left: -5%;
-  transition-duration: 0.3s;
-}
-
-.Btn:hover .tooltip {
-  opacity: 1;
-  transition-duration: 0.3s;
-}
-
-.Btn:hover {
-  background-color: rgb(150, 94, 255);
-  transition-duration: 0.3s;
-}
-
-.Btn:hover .icon2 {
-  border-bottom: 2px solid rgb(235, 235, 235);
-  border-left: 2px solid rgb(235, 235, 235);
-  border-right: 2px solid rgb(235, 235, 235);
-}
-
-.Btn:hover .svgIcon {
-  fill: rgb(255, 255, 255);
-  animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0px);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-/* Botao Restaurante */
+/* Botões gerais */
 button {
   cursor: pointer;
   font-weight: 700;
   transition: all 0.2s;
   padding: 10px 20px;
   border-radius: 100px;
-
   border: 1px solid transparent;
   display: flex;
   align-items: center;
   font-size: 15px;
-}
-
-button:hover {
-  background: #eb5e28;
 }
 
 button > svg {
@@ -376,30 +335,25 @@ button > svg {
   margin-left: 10px;
   transition: transform 0.3s ease-in-out;
 }
-
 button:hover svg {
   transform: translateX(5px);
 }
-
 button:active {
   transform: scale(0.95);
 }
 
-/* Estilos específicos para a página About */
+/* About page specifics (kept here for now) */
 .about-page {
   padding: 3rem 1rem;
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .about-page .container {
   max-width: 720px;
 }
-
 .about-page .card-stack {
   padding: 1rem 0;
 }
-
 .about-page .stack-card {
   display: block;
   padding: 2rem;
@@ -411,243 +365,125 @@ button:active {
   );
   border: 1px solid rgba(235, 94, 40, 0.08);
 }
-
 .about-page .stack-title {
   font-size: 1.6rem;
   margin-bottom: 0.75rem;
 }
-
 .about-page .stack-content p {
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.92);
 }
-
 @media (min-width: 768px) {
   .about-page {
     padding: 4rem 2rem;
   }
-
   .about-page .card-stack {
     gap: 5rem;
   }
 }
 
-/* Theme transitions and dark-mode body tweak */
-body {
-  transition: background 0.45s ease, color 0.35s ease;
+.main__action {
+  /* fixo na parte inferior e centralizado */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+  z-index: 60;
+  pointer-events: auto;
 }
 
-html.dark body {
-  background: linear-gradient(135deg, #030203 0%, #382f3d 50%, #281c2a 100%);
+.main__action.lower {
+  bottom: calc(
+    40px + env(safe-area-inset-bottom)
+  ); /* move o botão mais para cima quando precisar */
+}
+.main__scroll {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--foreground);
-}
-
-/* From Uiverse.io by Madflows */
-.toggle-switch {
-  position: relative;
-  width: 100px;
-  height: 50px;
-  --light: #d8dbe0;
-  --dark: #28292c;
-  --link: rgb(27, 129, 112);
-  --link-hover: rgb(24, 94, 82);
-}
-
-.toggle-switch .switch-label {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: var(--dark);
-  border-radius: 25px;
   cursor: pointer;
-  border: 3px solid var(--dark);
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
-
-.toggle-switch .checkbox {
-  position: absolute;
+.main__scroll:hover {
+  transform: translateY(-4px);
+  opacity: 0.95;
+}
+.main__scroll-box {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.2s ease;
+}
+.main__scroll-box svg {
+  width: 18px;
+  height: 18px;
   display: block;
-  width: 100%;
-  height: 100%;
+}
+.main__scroll-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main__scroll,
+  .main__scroll-box {
+    transition: none;
+  }
+}
+
+/* button scroll down */
+a {
+  text-decoration: none;
+}
+/* <main-style> ============================ */
+.main__scroll-text {
+  color: rgba(28, 28, 30, 1);
+}
+
+.main__action:hover .main__scroll-box {
+  animation: scroll-down 3s infinite;
+}
+
+/* Animate scroll icon */
+@keyframes scroll-down {
+  0%,
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+
+  35% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+}
+
+/* Fade-up fallback for environments without JS motion */
+.fade-up {
   opacity: 0;
-  margin: 0;
-  cursor: pointer;
+  transform: translateY(12px);
+  animation: fadeUpIn 0.6s forwards ease-out;
 }
-
-.toggle-switch .slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  transition: 0.3s;
-}
-
-.toggle-switch .checkbox:checked ~ .slider {
-  background-color: var(--light);
-}
-
-.toggle-switch .slider::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  box-shadow: inset 12px -4px 0px 0px var(--light);
-  background-color: var(--dark);
-  transition: 0.3s;
-}
-
-.toggle-switch .checkbox:checked ~ .slider::before {
-  transform: translateX(50px);
-  background-color: var(--dark);
-  box-shadow: none;
-}
-
-/* sun/moon icons inside toggle */
-
-.toggle-switch svg {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(1);
-  z-index: 3;
-  color: rgba(255, 255, 255, 0.95);
-  transition: opacity 220ms ease, transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
-  pointer-events: none;
-  opacity: 0;
-}
-
-.toggle-switch .icon-sun {
-  left: 12px;
-  opacity: 1; /* default: sun visible when not checked */
-}
-
-.toggle-switch .icon-moon {
-  right: 12px;
-  opacity: 0;
-  transform: translateY(-40%) scale(0.96);
-}
-
-.toggle-switch .checkbox:checked ~ .icon-moon {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
-
-.toggle-switch .checkbox:checked ~ .icon-sun {
-  opacity: 0;
-  transform: translateY(-60%) scale(0.9);
-}
-
-.toggle-switch .checkbox:not(:checked) ~ .icon-sun {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
-
-/* Small positioning in navbar */
-.toggle-switch {
-  margin-left: 12px;
-}
-
-/* Dark Mode Toggle */
-.toggle-switch {
-  position: relative;
-  width:  100px;
-  height: 50px;
-  --light: #d8dbe0;
-  --dark: #28292c;
-  --link: rgb(27, 129, 112);
-  --link-hover: rgb(24, 94, 82);
-}
-
-.switch-label {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: var(--dark);
-  border-radius: 25px;
-  cursor: pointer;
-  border: 3px solid var(--dark);
-}
-
-.checkbox {
-  position: absolute;
-  display: none;
-}
-
-.slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.checkbox:checked ~ .slider {
-  background-color: var(--light);
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  -webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
-  box-shadow: inset 12px -4px 0px 0px var(--light);
-  background-color: var(--dark);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.checkbox:checked ~ .slider::before {
-  -webkit-transform: translateX(50px);
-  -ms-transform: translateX(50px);
-  transform: translateX(50px);
-  background-color: var(--dark);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-/* Responsive: smaller toggle on mobile */
-@media (max-width: 600px) {
-  .toggle-switch {
-    width: 70px;
-    height: 36px;
-  }
-
-  .toggle-switch .switch-label,
-  .switch-label {
-    height: 36px;
-    border-radius: 18px;
-    border-width: 2px;
-  }
-
-  .toggle-switch .slider,
-  .slider {
-    height: 36px;
-    border-radius: 18px;
-  }
-
-  .toggle-switch .slider::before,
-  .slider::before {
-    top: 6px;
-    left: 6px;
-    width: 18px;
-    height: 18px;
-  }
-
-  /* translateX approximado para nova largura */
-  .toggle-switch .checkbox:checked ~ .slider::before,
-  .checkbox:checked ~ .slider::before {
-    transform: translateX(34px);
-    -webkit-transform: translateX(34px);
-  }
-
-  .toggle-switch svg {
-    width: 14px;
-    height: 14px;
+@keyframes fadeUpIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -14,9 +14,17 @@ import {
 import { motion } from "framer-motion";
 
 const data = [
-  { linguagem: "Software Engineering Foundations", pratica_pct: 72, logica_pct: 65 },
+  {
+    linguagem: "Software Engineering Foundations",
+    pratica_pct: 72,
+    logica_pct: 65,
+  },
   { linguagem: "Back-End Development", pratica_pct: 92, logica_pct: 79 },
-  { linguagem: "Advanced Back-End Development", pratica_pct: 0o0, logica_pct: 0o0 },
+  {
+    linguagem: "Advanced Back-End Development",
+    pratica_pct: 0o0,
+    logica_pct: 0o0,
+  },
 ];
 
 export default function BarChartCard() {
@@ -26,11 +34,11 @@ export default function BarChartCard() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <Card className="shadow-lg rounded-2xl">
+      <Card className="chart-card">
         <CardHeader>
           <CardTitle>Distribuição de Prática e Lógica (%)</CardTitle>
         </CardHeader>
-        <CardContent className="h-[350px]">
+        <CardContent className="chart-card-content">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />

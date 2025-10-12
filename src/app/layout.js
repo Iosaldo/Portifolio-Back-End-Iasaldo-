@@ -2,22 +2,27 @@
 "use client";
 import { Avatar, Button, Stack } from "@mui/material";
 import "./globals.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Link from "next/link";
 import * as React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { ThemeProvider, useTheme } from "../components/ThemeProvider"; // Importe o provedor e o hook
+import Switch from "../components/Switch";
 
 function AppContent({ children }) {
   const { isDarkMode, toggleDarkMode } = useTheme(); // Use o hook para obter o estado e a função de alternância
   const router = useRouter();
   const pathname = usePathname();
+  React.useEffect(() => {
+    AOS.init({ duration: 700, easing: "ease-out", once: true });
+  }, []);
   const isRestaurante = (pathname || "")
     .toLowerCase()
     .startsWith("/restaurantepage");
 
   return (
-    <html lang="pt" className={isDarkMode ? "dark" : "light"}>
-      {/* Adicione a classe 'dark' ou 'light' ao html */}
+    <html lang="pt, eng" className={isDarkMode ? "dark" : "light"}>
       <body>
         {/* Barra de navegação global (oculta na página Restaurante) */}
         {!isRestaurante && (
@@ -87,24 +92,8 @@ function AppContent({ children }) {
                 </svg>
               </Button>
 
-              {/* Dark Mode Toggle */}
-              <div
-                className="toggle-switch"
-                role="button"
-                aria-label="Alternar modo escuro"
-              >
-                <label className="switch-label">
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    checked={isDarkMode}
-                    onChange={toggleDarkMode}
-                    aria-checked={isDarkMode}
-                    aria-label="Alternar modo escuro"
-                  />
-                  <span className="slider"></span>
-                </label>
-              </div>
+              {/* Dark Mode Toggle (custom Switch) */}
+              <Switch />
             </nav>
           </header>
         )}
