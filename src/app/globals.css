@@ -1,6 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap");
 
-/* --- Tailwind shim: minimal utility classes used by the markup --- */
+/* ==================================================================
+   globals.css
+   - Reorganizado para melhor leitura: seções claras, variáveis, utilitários
+   - Mantido comportamento visual original (apenas comentários e agrupamento)
+   ================================================================== */
+
+/* -----------------------------
+   Theme variables & mode overrides
+   ----------------------------- */
+:root {
+  --background: #000000;
+  --foreground: #eb5e28; /* cor principal */
+}
+
+/* When the html element has class `dark` we swap a couple values */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* -----------------------------
+   Base / global styles
+   ----------------------------- */
+body {
+  background: linear-gradient(135deg, #000000 10%, #5c5770 50%, #4b3d58 30%);
+  color: var(--foreground);
+  font-family: "Andada Pro", serif !important;
+  transition: background 0.55s ease, color 0.55s ease;
+}
+
+/* Dark-mode body override (kept intentionally explicit) */
+html.dark body {
+  background: linear-gradient(135deg, #030203 0%, #382f3d 100%, #281c2a 100%);
+  color: var(--foreground);
+}
+
+/* Responsive prefers-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* -----------------------------
+   Tiny Tailwind-like utility shim
+   - Apenas classes usadas no projeto
+   - Mantidas com !important para compatibilidade com componentes existentes
+   ----------------------------- */
 /* Layout */
 .flex {
   display: flex !important;
@@ -24,7 +72,7 @@
   text-align: center !important;
 }
 
-/* Spacing (approximate to Tailwind scale) */
+/* Spacing (approx. Tailwind scale) */
 .p-24 {
   padding: 6rem !important;
 }
@@ -41,7 +89,7 @@
   margin-bottom: 4rem !important;
 }
 
-/* Width / max-width */
+/* Width / constraints */
 .max-w-5xl {
   max-width: 64rem !important;
 }
@@ -51,7 +99,7 @@
   z-index: 10 !important;
 }
 
-/* Utility display helpers */
+/* Grid helpers */
 .grid {
   display: grid !important;
 }
@@ -59,7 +107,7 @@
   grid-template-columns: 1fr !important;
 }
 
-/* Small helpers used in a few places */
+/* Small helpers */
 .mb-6 {
   margin-bottom: 1.5rem !important;
 }
@@ -80,43 +128,47 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Responsive helpers: minimal using media queries for md: prefix (>=768px) */
+/* escaped / bracket classes used in markup */
+.h-\[350px\] {
+  height: 350px !important;
+}
+
+/* responsive utilities (md: prefix) */
 @media (min-width: 768px) {
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
-/* A few bracket-style classes used in code (escaped) */
-.h-\[350px\] {
-  height: 350px !important;
+/* -----------------------------
+   Components / small UI pieces
+   ----------------------------- */
+/* Buttons (general) */
+button {
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
 }
 
-/* Theme variables and global body background */
-:root {
-  --background: #000000;
-  --foreground: #eb5e28; /* cor principal */
+button > svg {
+  width: 24px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+button:hover svg {
+  transform: translateX(5px);
+}
+button:active {
+  transform: scale(0.95);
 }
 
-html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
-/* Body and transitions */
-body {
-  background: linear-gradient(135deg, #000000 10%, #5c5770 50%, #4b3d58 30%);
-  color: var(--foreground);
-  font-family: "Andada Pro", serif !important;
-  transition: background 0.55s ease, color 0.55s ease;
-}
-
-html.dark body {
-  background: linear-gradient(135deg, #030203 0%, #382f3d 100%, #281c2a 100%);
-  color: var(--foreground);
-}
-
-/* Botões utilitários */
+/* custom-button: used where a smaller custom look is required */
 .custom-button {
   color: var(--foreground) !important;
   font-weight: 500 !important;
@@ -130,65 +182,7 @@ html.dark body {
   transform: translateY(-2px);
 }
 
-/* Avatar */
-.avatar {
-  border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(235, 94, 40, 0.15);
-  transition: transform 0.3s ease;
-}
-.avatar:hover {
-  transform: scale(1.3);
-}
-
-/* Card stack */
-.card-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-@media (min-width: 1024px) {
-  .card-stack {
-    gap: 5rem;
-  }
-}
-/* Card stack (use per-page styles where needed) */
-
-/* Accordion animation */
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
-}
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
-}
-.animate-accordion-down {
-  animation: accordion-down 0.2s ease-out;
-}
-.animate-accordion-up {
-  animation: accordion-up 0.2s ease-out;
-}
-
-/* About-specific visual components moved to src/app/about/about.css */
-
-.h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-/* Btn (unificado) */
+/* Circular action button used across the UI */
 .Btn {
   width: 50px;
   height: 50px;
@@ -213,6 +207,7 @@ html.dark body {
   fill: #fff;
   animation: slide-in-top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
 .icon2 {
   width: 18px;
   height: 5px;
@@ -223,6 +218,8 @@ html.dark body {
 .Btn:hover .icon2 {
   border-color: #ebebeb;
 }
+
+/* Tooltip used by the circular Btn */
 .tooltip {
   position: absolute;
   right: -105px;
@@ -251,46 +248,40 @@ html.dark body {
   opacity: 1;
 }
 
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+/* Avatar */
+.avatar {
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(235, 94, 40, 0.15);
+  transition: transform 0.3s ease;
+}
+.avatar:hover {
+  transform: scale(1.3);
 }
 
-/* Botões gerais */
-button {
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.2s;
-  padding: 10px 20px;
-  border-radius: 100px;
-  border: 1px solid transparent;
+/* Card stack (re-usable column stack) */
+.card-stack {
   display: flex;
-  align-items: center;
-  font-size: 15px;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .card-stack {
+    gap: 5rem;
+  }
 }
 
-button > svg {
-  width: 24px;
-  margin-left: 10px;
-  transition: transform 0.3s ease-in-out;
-}
-button:hover svg {
-  transform: translateX(5px);
-}
-button:active {
-  transform: scale(0.95);
+/* Heading helper used in some pages */
+.h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-/* About page specifics moved to src/app/about/about.css */
-
+/* Main action/scroll controls (kept as in original) */
 .main__action {
-  /* fixo na parte inferior e centralizado */
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -300,12 +291,10 @@ button:active {
   z-index: 60;
   pointer-events: auto;
 }
-
 .main__action.lower {
-  bottom: calc(
-    40px + env(safe-area-inset-bottom)
-  ); /* move o botão mais para cima quando precisar */
+  bottom: calc(40px + env(safe-area-inset-bottom));
 }
+
 .main__scroll {
   background: transparent;
   border: none;
@@ -322,6 +311,7 @@ button:active {
   transform: translateY(-4px);
   opacity: 0.95;
 }
+
 .main__scroll-box {
   width: 36px;
   height: 36px;
@@ -342,47 +332,72 @@ button:active {
   text-transform: uppercase;
   opacity: 0.9;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .main__scroll,
-  .main__scroll-box {
-    transition: none;
-  }
-}
-
-/* button scroll down */
-a {
-  text-decoration: none;
-}
-/* <main-style> ============================ */
 .main__scroll-text {
   color: rgba(28, 28, 30, 1);
 }
 
+a {
+  text-decoration: none;
+}
 .main__action:hover .main__scroll-box {
   animation: scroll-down 3s infinite;
 }
 
-/* Animate scroll icon */
+/* -----------------------------
+   Animations / keyframes
+   ----------------------------- */
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @keyframes scroll-down {
   0%,
   100% {
     transform: translateY(0rem);
     opacity: 1;
   }
-
   35% {
     transform: translateY(1rem);
     opacity: 0;
   }
-
   70% {
     transform: translateY(-1rem);
     opacity: 0;
   }
 }
 
-/* Fade-up fallback for environments without JS motion */
+/* Accordion animations (Radix style variable used by components) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Fade-up fallback for non-JS motion */
 .fade-up {
   opacity: 0;
   transform: translateY(12px);
