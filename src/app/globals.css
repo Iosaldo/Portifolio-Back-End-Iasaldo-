@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap");
 
-/* ==================================================================
-   globals.css
-   - Reorganizado para melhor leitura: seções claras, variáveis, utilitários
-   - Mantido comportamento visual original (apenas comentários e agrupamento)
-   ================================================================== */
-
 /* -----------------------------
    Theme variables & mode overrides
    ----------------------------- */
@@ -331,8 +325,6 @@ button:active {
   letter-spacing: 0.6px;
   text-transform: uppercase;
   opacity: 0.9;
-}
-.main__scroll-text {
   color: rgba(28, 28, 30, 1);
 }
 
