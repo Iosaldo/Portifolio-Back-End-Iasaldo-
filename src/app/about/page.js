@@ -27,7 +27,7 @@ export default function AboutPage() {
         </div>
       </div>
       {/* Card Stack */}
-      <div className="card-stack">
+      <div className="card-stack card-stack--padded">
         {/* Introdução */}
         <div className="stack-card">
           <h2 className="stack-title">Sobre Mim</h2>

@@ -1,4 +1,11 @@
+/* about.css — apenas estilos específicos da página About (overrides e variantes locais) */
 /* About page styles  */
+/*
+  Este arquivo contém apenas estilos específicos da página "About".
+  - Regras e utilitários compartilhados (ex.: .card-stack, utilitários de layout)
+    devem residir em `src/app/globals.css`.
+  - Use este arquivo para ajustes, variantes e overrides específicos da página.
+*/
 .about-page {
   padding: 3rem 1rem;
   max-width: 1100px;
@@ -6,9 +13,6 @@
 }
 .about-page .container {
   max-width: 720px;
-}
-.about-page .card-stack {
-  padding: 1rem 0;
 }
 .about-page .stack-card {
   display: block;
@@ -32,9 +36,6 @@
 @media (min-width: 768px) {
   .about-page {
     padding: 4rem 2rem;
-  }
-  .about-page .card-stack {
-    gap: 5rem;
   }
 }
 

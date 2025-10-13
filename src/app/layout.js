@@ -23,7 +23,7 @@ function AppContent({ children }) {
 
   return (
     <html lang="pt-BR" className={isDarkMode ? "dark" : "light"}>
-      <body>
+      <body className={isRestaurante ? "resto-page" : undefined}>
         {/* Barra de navegação global (oculta na página Restaurante) */}
         {!isRestaurante && (
           <header style={{ padding: "1rem" }}>
@@ -102,9 +102,7 @@ function AppContent({ children }) {
         <main style={{ padding: "1rem" }}>{children}</main>
 
         {/* Barra de rodapé */}
-        <footer
-          style={{ background: "#252422", padding: "1rem", marginTop: "2rem" }}
-        >
+        <footer>
           <p>© 2025 - Iasaldo</p>
         </footer>
       </body>

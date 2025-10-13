@@ -1,4 +1,5 @@
 import "./SocialCard.css";
+import "./icons-about.css";
 
 export default function SocialCard() {
   return (

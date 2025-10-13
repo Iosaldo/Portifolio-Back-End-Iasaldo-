@@ -1,7 +1,7 @@
 /* Dashboard styles (moved from globals.css) */
 .dashboard-main {
   padding: 2rem;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--site-footer-height, 64px));
 }
 @media (max-width: 768px) {
   .dashboard-main {

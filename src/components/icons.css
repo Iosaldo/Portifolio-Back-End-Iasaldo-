@@ -122,18 +122,22 @@
   font-weight: 700;
   margin-bottom: 6px;
   font-size: 13px;
+  line-height: 1.1;
+  color: #fff; /* manter legibilidade sobre o fundo translúcido */
+  text-align: left;
 }
 .example-2 .tooltip-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 2px 0;
+  margin: 4px 0;
 }
 .example-2 .badge {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   display: inline-block;
+  flex: 0 0 auto;
 }
 .example-2 .badge.practice {
   background: #3b82f6; /* azul */
@@ -144,20 +148,52 @@
 .example-2 .tooltip-text {
   font-size: 12px;
   opacity: 0.95;
+  line-height: 1.3;
+  color: #f5f5f5;
+}
+
+/* Limit tooltip width and allow wrapping on small screens */
+.example-2 .icon-content .tooltip {
+  max-width: 220px;
+  text-align: left;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .example-2 .icon-content .tooltip {
+    padding: 6px 8px;
+    font-size: 12px;
+    top: -40px; /* ajustar posição em telas pequenas */
+  }
+  .example-2 .tooltip-title {
+    font-size: 12px;
+  }
 }
 
 /* data-social color variants (fall back to inline filled style) */
 .example-2 .icon-content a[data-social="whatsapp"] .filled,
-.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
+.example-2 .icon-content a[data-social="whatsapp"] + .tooltip,
+.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip,
+.example-2 .icon-content[data-social="whatsapp"] .filled,
+.example-2 .icon-content[data-social="whatsapp"] .tooltip {
   background-color: #128c7e;
+  border-color: #128c7e;
 }
 
 .example-2 .icon-content a[data-social="facebook"] .filled,
-.example-2 .icon-content a[data-social="facebook"] ~ .tooltip {
+.example-2 .icon-content a[data-social="facebook"] + .tooltip,
+.example-2 .icon-content a[data-social="facebook"] ~ .tooltip,
+.example-2 .icon-content[data-social="facebook"] .filled,
+.example-2 .icon-content[data-social="facebook"] .tooltip {
   background-color: #3b5998;
+  border-color: #3b5998;
 }
+
 .example-2 .icon-content a[data-social="instagram"] .filled,
-.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+.example-2 .icon-content a[data-social="instagram"] + .tooltip,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip,
+.example-2 .icon-content[data-social="instagram"] .filled,
+.example-2 .icon-content[data-social="instagram"] .tooltip {
   background: linear-gradient(
     45deg,
     #405de6,
@@ -167,10 +203,16 @@
     #e1306c,
     #fd1f1f
   );
+  border-color: transparent;
 }
+
 .example-2 .icon-content a[data-social="youtube"] .filled,
-.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+.example-2 .icon-content a[data-social="youtube"] + .tooltip,
+.example-2 .icon-content a[data-social="youtube"] ~ .tooltip,
+.example-2 .icon-content[data-social="youtube"] .filled,
+.example-2 .icon-content[data-social="youtube"] .tooltip {
   background-color: #ff0000;
+  border-color: #ff0000;
 }
 
 /* Use --lang-color if provided (set inline on li) */
@@ -184,11 +226,8 @@
     rgba(255, 255, 255, 0.03),
     rgba(255, 255, 255, 0.02)
   );
-  border-color: color-mix(
-    in srgb,
-    var(--lang-color) 20%,
-    rgba(255, 255, 255, 0.06)
-  );
+  /* Fallback safe border color for wider compatibility */
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 /* Ensure svg color uses currentColor and switches to white when hovered */

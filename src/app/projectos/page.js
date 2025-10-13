@@ -43,7 +43,7 @@ function ProjectoAderitoCard() {
 
 export default function ProjectosPage() {
   return (
-    <main className="projectos-page">
+    <div className="projectos-page">
       <Typography variant="h4" component="h1" gutterBottom>
         Projectos
       </Typography>
@@ -51,6 +51,6 @@ export default function ProjectosPage() {
         <ProjectoAderitoCard />
         {/* Adicione outros project cards aqui */}
       </Box>
-    </main>
+    </div>
   );
 }

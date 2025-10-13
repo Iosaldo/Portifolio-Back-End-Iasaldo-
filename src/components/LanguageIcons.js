@@ -3,7 +3,7 @@ import { BiLogoPostgresql } from "react-icons/bi";
 
 import { SiPython, SiJavascript, SiNextdotjs, SiExpress } from "react-icons/si";
 import { FaGit, FaGithub, FaJava, FaReact } from "react-icons/fa"; // Importa FaJava da coleção Font Awesome
-import "./icons.css";
+import "./icons-dashboard.css";
 
 const languages = [
   {

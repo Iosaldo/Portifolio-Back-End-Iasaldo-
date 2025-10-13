@@ -1,12 +1,15 @@
 /* Estilos dedicados para a página de Restaurante */
 
 .resto-root {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--site-footer-height, 64px));
   color: var(--foreground);
   /* desloca o conteúdo para baixo para não ficar coberto pelo header fixo */
+  /* valores padrão (fallback) caso as variáveis não estejam definidas globalmente */
   --resto-nav-height: 44px;
-  --resto-header-height: 160px; /* aumentar para caber título/subtítulo */
-  padding-top: calc(var(--resto-nav-height) + var(--resto-header-height));
+  --resto-header-height: 220px; /* aumentar para caber título/subtítulo e avatar */
+  padding-top: calc(
+    var(--resto-nav-height, 44px) + var(--resto-header-height, 220px)
+  );
 }
 
 .Resumo,
@@ -27,10 +30,9 @@
   left: 0;
   right: 0;
   height: var(--resto-header-height);
-  z-index: 9999; /* garantir que fique acima de outros elementos */
-  /* leve fundo translúcido para manter contraste sem ser completamente opaco */
+  z-index: 10001; /* garantir que fique acima da nav e outros elementos */
+  /* fundo translúcido com fallback robusto para contraste consistente */
   background: color-mix(in oklab, var(--background) 12%, transparent);
-  /* fallback mais visível caso color-mix não seja suportado */
   background-color: rgba(0, 0, 0, 0.18);
   color: var(--foreground); /* garantir cor do texto no header */
   backdrop-filter: blur(8px);
@@ -58,7 +60,7 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem; /* alinhado ao container */
   display: flex;
   align-items: center;
 }
@@ -68,7 +70,7 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem; /* alinhado ao container */
   display: flex;
   align-items: center;
   justify-content: flex-start; /* alinhamento à esquerda para a nav */
@@ -102,6 +104,13 @@
   .resto-meta {
     display: none; /* escondemos meta para caber melhor no header móvel */
   }
+  /* reduzir altura do header em mobile para evitar sobreposição excessiva */
+  .resto-root {
+    --resto-header-height: 120px;
+    padding-top: calc(
+      var(--resto-nav-height, 44px) + var(--resto-header-height, 120px)
+    );
+  }
 }
 
 .resto-title {
@@ -122,16 +131,36 @@
 
 .resto-title.atop {
   position: absolute;
-  top: 8px; /* pequeno deslocamento para ficar sobre o avatar */
+  top: 72px; /* posição abaixo do avatar para evitar sobreposição */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 4;
   pointer-events: none; /* não atrapalha cliques no avatar/link */
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
+/* Avatar central do header (definição consolidada) */
 .resto-avatar {
-  margin-top: 26px; /* espaço para o título sobreposto */
+  position: relative;
+  z-index: 10002;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 6px;
+  transform: translateY(-18px);
+  border: 4px solid color-mix(in oklab, var(--foreground) 22%, transparent);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55),
+    0 3px 10px rgba(235, 94, 40, 0.08);
+}
+
+@media (max-width: 480px) {
+  .resto-avatar {
+    width: 72px !important;
+    height: 72px !important;
+    transform: translateY(-8px);
+    border-width: 3px;
+  }
 }
 
 .resto-subtitle {
@@ -149,6 +178,25 @@
   flex-wrap: wrap;
 }
 
+.resto-meta-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.resto-meta-link:hover,
+.resto-meta-link:focus {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+/* foco visível acessível para links e botões do header */
+.resto-link:focus,
+.resto-portfolio-button:focus,
+.resto-meta-link:focus {
+  outline: 3px solid color-mix(in oklab, var(--foreground) 14%, transparent);
+  outline-offset: 2px;
+}
+
 .resto-link {
   display: flex; /* bloco flexível para permitir margin:auto centrar */
   align-items: center;
@@ -162,6 +210,28 @@
   border-radius: 999px;
   transition: all 0.25s ease;
   width: fit-content; /* ajusta ao conteúdo e permite centralização */
+}
+
+/* Wrapper para os links no header: exibe LinkedIn e Contact lado a lado */
+.resto-links {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0.6rem auto 1rem;
+}
+
+/* Em telas pequenas, empilha os links para caber melhor */
+@media (max-width: 420px) {
+  .resto-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .resto-link {
+    width: auto;
+    padding: 0.45rem 0.7rem;
+  }
 }
 
 .resto-link-icon {
@@ -178,6 +248,37 @@
   margin-top: 0.6rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
   border: 3px solid color-mix(in oklab, var(--foreground) 14%, transparent);
+}
+
+/* Posicionamento do HeaderCard: centralizado horizontalmente no header
+   - usa left:50% + transform para centralizar e fallback para alinhamento
+   - largura responsiva para não ultrapassar o container
+   - pointer-events: none no wrapper para não interferir no fluxo do header
+*/
+.resto-header-card {
+  position: absolute;
+  top: calc(var(--resto-nav-height, 44px) + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10003; /* acima do avatar (10002) */
+  width: min(880px, calc(100% - 2.5rem));
+  pointer-events: none; /* não interfere em cliques por padrão */
+  display: flex;
+  justify-content: center; /* garante centralização do conteúdo interno */
+}
+
+/* garantir que o HeaderCard interno permita interação quando necessário */
+.resto-header-card > * {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 880px;
+}
+
+@media (max-width: 900px) {
+  /* Oculta o cartão em telas médias e pequenas para evitar sobreposição */
+  .resto-header-card {
+    display: none;
+  }
 }
 
 .resto-link:hover {
@@ -234,6 +335,23 @@
   padding: 1rem 1.1rem;
   backdrop-filter: blur(8px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Idiomas:  */
+.Idiomas .card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+/* Remover fundo escuro de Resumo e Educacao (usar visual neutro como o restante) */
+.Resumo .card,
+.Educacao .card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.75rem; /* mantém espaçamento interno apropriado */
 }
 
 .stack {
@@ -370,4 +488,12 @@
     height: 1rem;
     transform: rotate(180deg);
   }
+}
+.resto-header {
+  margin-right: auto;
+  margin-left: auto;
+}
+.resto-root {
+  display: grid;
+  justify-content: center;
 }

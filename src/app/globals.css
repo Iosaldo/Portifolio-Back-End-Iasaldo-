@@ -1,11 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap");
 
+/*
+  globals.css - utilitários e componentes compartilhados
+  - Contém variáveis de tema, utilitários (classes 'utility') e componentes base
+    reutilizados em várias páginas (ex.: .card-stack, .container, .Btn).
+  - Evite colocar regras específicas de página aqui; use arquivos de página
+    (ex.: src/app/about/about.css) para overrides locais.
+*/
+
 /* -----------------------------
    Theme variables & mode overrides
    ----------------------------- */
 :root {
   --background: #000000;
   --foreground: #eb5e28; /* cor principal */
+  --site-footer-height: 64px;
 }
 
 /* When the html element has class `dark` we swap a couple values */
@@ -267,6 +276,26 @@ button:active {
   }
 }
 
+/* Generic container utility - use across pages for centered content areas */
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Variant: padded card-stack used by About page (padding + slightly different breakpoint for gap) */
+.card-stack--padded {
+  padding: 1rem 0;
+}
+@media (min-width: 768px) {
+  .card-stack--padded {
+    gap: 5rem; /* match About's intended gap at 768px */
+  }
+}
+
 /* Heading helper used in some pages */
 .h1 {
   font-size: 2.5rem;
@@ -400,4 +429,12 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: transparent;
+  color: #888;
+  font-size: 1rem;
 }

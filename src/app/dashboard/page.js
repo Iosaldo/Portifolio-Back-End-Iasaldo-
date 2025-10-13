@@ -7,12 +7,12 @@ import "./dashboard.css";
 
 export default function DashboardPage() {
   return (
-    <main className="dashboard-main">
+    <div className="dashboard-main">
       <div className="projectos">
         <DashboardHeader />
         <StatsPanel />
         <ChartsGrid />
       </div>
-    </main>
+    </div>
   );
 }

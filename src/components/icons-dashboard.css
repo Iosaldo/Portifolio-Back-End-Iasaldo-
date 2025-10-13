@@ -1,0 +1,232 @@
+.example-2 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-content {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+}
+
+/* Semantic aliases to gradually remove utility classes from markup */
+.language-list {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.language-item {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  cursor: pointer;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 220ms ease, color 200ms ease;
+  will-change: transform, box-shadow;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.icon-content .filled {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 200ms ease;
+  z-index: 0;
+}
+
+.icon-content a svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1), color 200ms ease;
+  width: 30px;
+  height: 30px;
+}
+
+.icon-content a:hover .filled {
+  transform: scaleY(1);
+}
+
+.icon-content a:hover svg {
+  transform: translateY(2px) scale(1.08);
+}
+
+.icon-content a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* keyboard focus accessibility */
+.icon-content a:focus-visible {
+  outline: 2px solid var(--foreground, #eb5e28);
+  outline-offset: 4px;
+}
+
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  z-index: 5;
+}
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+/* Tooltip content improvements
+   - Ajustes de tipografia, espaçamento e responsividade
+   - Melhor contraste e limite de largura para evitar overflow
+*/
+.example-2 .tooltip-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #fff; /* manter legibilidade sobre o fundo translúcido */
+  text-align: left;
+}
+.example-2 .tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.example-2 .badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+.example-2 .badge.practice {
+  background: #3b82f6; /* azul */
+}
+.example-2 .badge.logic {
+  background: #f97316; /* laranja */
+}
+.example-2 .tooltip-text {
+  font-size: 12px;
+  opacity: 0.95;
+  line-height: 1.3;
+  color: #f5f5f5;
+}
+
+/* Limit tooltip width and allow wrapping on small screens */
+.example-2 .icon-content .tooltip {
+  max-width: 220px;
+  text-align: left;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .example-2 .icon-content .tooltip {
+    padding: 6px 8px;
+    font-size: 12px;
+    top: -40px; /* ajustar posição em telas pequenas */
+  }
+  .example-2 .tooltip-title {
+    font-size: 12px;
+  }
+}
+
+/* data-social color variants (fall back to inline filled style) */
+.example-2 .icon-content a[data-social="whatsapp"] .filled,
+.example-2 .icon-content a[data-social="whatsapp"] + .tooltip,
+.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip,
+.example-2 .icon-content[data-social="whatsapp"] .filled,
+.example-2 .icon-content[data-social="whatsapp"] .tooltip {
+  background-color: #128c7e;
+  border-color: #128c7e;
+}
+
+.example-2 .icon-content a[data-social="facebook"] .filled,
+.example-2 .icon-content a[data-social="facebook"] + .tooltip,
+.example-2 .icon-content a[data-social="facebook"] ~ .tooltip,
+.example-2 .icon-content[data-social="facebook"] .filled,
+.example-2 .icon-content[data-social="facebook"] .tooltip {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"] + .tooltip,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip,
+.example-2 .icon-content[data-social="instagram"] .filled,
+.example-2 .icon-content[data-social="instagram"] .tooltip {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f
+  );
+  border-color: transparent;
+}
+
+.example-2 .icon-content a[data-social="youtube"] .filled,
+.example-2 .icon-content a[data-social="youtube"] + .tooltip,
+.example-2 .icon-content a[data-social="youtube"] ~ .tooltip,
+.example-2 .icon-content[data-social="youtube"] .filled,
+.example-2 .icon-content[data-social="youtube"] .tooltip {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+/* Use --lang-color if provided (set inline on li) */
+.example-2 .icon-content[style*="--lang-color"] .filled {
+  background-color: var(--lang-color);
+}
+.example-2 .icon-content[style*="--lang-color"] .tooltip {
+  /* Use a subtle translucent overlay of the language color for tooltip background on hover */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  /* Fallback safe border color for wider compatibility */
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Ensure svg color uses currentColor and switches to white when hovered */
+.example-2 .icon-content a svg {
+  color: inherit;
+}
+.example-2 .icon-content a:hover svg {
+  color: #fff;
+}
