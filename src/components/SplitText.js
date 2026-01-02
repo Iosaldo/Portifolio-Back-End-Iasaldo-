@@ -2,7 +2,8 @@ import React from "react";
 import "./SplitText.css";
 
 const SplitText = ({ children }) => {
-  const words = children.split(" ");
+  const text = typeof children === "string" ? children : String(children);
+  const words = text.split(" ");
 
   return (
     <h1 className="text-4xl font-bold title-grow split-text">

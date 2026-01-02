@@ -86,37 +86,30 @@
 
 .example-2 .icon-content .tooltip {
   position: absolute;
-  top: -44px;
+  top: -36px;
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 10px;
-  border-radius: 6px;
-  opacity: 0;
-  visibility: hidden;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
   font-size: 14px;
-  transition: opacity 0.26s cubic-bezier(0.2, 0.9, 0.2, 1),
-    transform 0.26s cubic-bezier(0.2, 0.9, 0.2, 1), visibility 0.26s;
-  z-index: 5; /* garantir que o tooltip fique acima do .filled */
-  /* Subtle 'glass' background instead of solid black. Data-social variants or --lang-color will override when present. */
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.02)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(6px) saturate(120%);
-  white-space: nowrap; /* manter o tooltip em uma linha como no snippet */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  z-index: 5;
 }
-
 .example-2 .icon-content:hover .tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(-28px);
+  transform: translateX(-50%) translateY(-6px);
 }
 
-/* Tooltip content improvements */
+/* Tooltip content improvements
+   - Ajustes de tipografia, espaçamento e responsividade
+   - Melhor contraste e limite de largura para evitar overflow
+*/
 .example-2 .tooltip-title {
   display: block;
   font-weight: 700;
