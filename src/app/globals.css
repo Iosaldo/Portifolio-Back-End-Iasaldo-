@@ -39,6 +39,9 @@ html.dark body {
   color: var(--foreground);
 }
 
+/* Slightly offset the oval to the right for visual balance */
+/* Handled later near hero styles (keep single definition) */
+
 /* Responsive prefers-reduced-motion fallback */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -532,20 +535,6 @@ footer {
   }
 }
 
-.card-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-@media (min-width: 1024px) {
-  .card-stack {
-    gap: 5rem;
-  }
-}
-
 .stack-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -673,4 +662,196 @@ footer {
   .projectos-page {
     padding: 3rem 2rem;
   }
+}
+
+/* -----------------------------
+   User-provided layout styles (background preserved)
+   Applied: keep existing `body` background in place.
+   ----------------------------- */
+
+:root {
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --muted: #b5b5b5;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Preserve existing background; only apply color/font/spacing */
+body {
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 80px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Two-column hero layout for portfolio design */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.hero-left {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.hero-right {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hero-title {
+  font-family: "Andada Pro", serif;
+  font-size: 6rem;
+  line-height: 0.95;
+  color: var(--text, #fff);
+  margin: 0.2rem 0;
+}
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--muted, rgba(255, 255, 255, 0.7));
+  margin-top: 8px;
+}
+.cta-outline {
+  display: inline-block;
+  padding: 18px 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: var(--text, #fff);
+  font-weight: 600;
+  cursor: pointer;
+}
+.hero-oval {
+  width: 420px;
+  height: 560px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-right .hero-oval {
+  margin-left: 1rem;
+}
+.hero-oval img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* elliptical mask */
+  clip-path: ellipse(48% 72% at 50% 50%);
+  -webkit-clip-path: ellipse(48% 72% at 50% 50%);
+  filter: grayscale(40%);
+}
+
+@media (max-width: 960px) {
+  .hero {
+    flex-direction: column;
+    padding: 60px 6%;
+  }
+  .hero-left {
+    order: 2;
+    text-align: center;
+  }
+  .hero-right {
+    order: 1;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-oval {
+    width: 300px;
+    height: 380px;
+  }
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.welcome {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.section {
+  padding: 80px 10%;
+  border-top: 1px solid var(--border);
+}
+
+.section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.section p,
+.section li {
+  color: var(--muted);
+  max-width: 700px;
+}
+
+ul {
+  list-style: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.skills {
+  max-width: 500px;
+}
+
+.skills div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.footer {
+  padding: 80px 10%;
+  border-top: 1px solid var(--border);
+}
+
+.footer h3 {
+  margin-bottom: 20px;
 }

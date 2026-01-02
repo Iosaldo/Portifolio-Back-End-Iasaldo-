@@ -3,9 +3,9 @@
   display: flex;
   min-height: calc(100vh - var(--site-footer-height, 64px));
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6rem;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0; /* delegar espaçamento ao .hero */
 }
 
 @media (max-width: 768px) {
@@ -88,3 +88,6 @@
   text-transform: uppercase;
   opacity: 0.9;
 }
+
+/* small helper to align hero content inside site-main when using globals.hero */
+.hero { width: 100%; }
