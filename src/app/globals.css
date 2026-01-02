@@ -438,3 +438,239 @@ footer {
   color: #888;
   font-size: 1rem;
 }
+
+/* -------------------------------------------------
+   Styles merged from: about/about.css, dashboard/dashboard.css, projectos/projectos.css
+   These were previously page-specific files; consolidated here per request.
+   ------------------------------------------------- */
+
+/* About page specific styles */
+.about-page {
+  padding: 3rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about-page .container {
+  max-width: 720px;
+}
+.about-page .stack-card {
+  display: block;
+  padding: 2rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(235, 94, 40, 0.08);
+}
+.about-page .stack-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+.about-page .stack-content p {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+}
+@media (min-width: 768px) {
+  .about-page {
+    padding: 4rem 2rem;
+  }
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-social-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .about-social-container {
+    padding: 0.75rem;
+  }
+}
+
+.about-card {
+  box-sizing: border-box;
+  background: rgba(217, 217, 217, 0.08);
+  border: 1px solid var(--foreground);
+  box-shadow: 12px 17px 51px rgba(235, 94, 40, 0.12);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+  padding: 2.5rem;
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-card:hover {
+  border: 1px solid var(--foreground);
+  transform: scale(1.13);
+  box-shadow: 12px 17px 51px rgba(235, 94, 40, 0.2);
+}
+
+/* Dashboard styles */
+.dashboard-main {
+  padding: 2rem;
+  min-height: calc(100vh - var(--site-footer-height, 64px));
+}
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: 1rem;
+  }
+}
+
+.card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .card-stack {
+    gap: 5rem;
+  }
+}
+
+.stack-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.stack-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--foreground);
+  box-shadow: 0 8px 30px rgba(235, 94, 40, 0.15);
+}
+.stack-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.dashboard-header {
+  margin-bottom: 1.5rem;
+}
+.dashboard-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #f97316;
+}
+.dashboard-subtitle {
+  font-size: 0.95rem;
+  color: #152238;
+}
+
+.stats-panel {
+  margin-bottom: 3rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chart-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+}
+.chart-card-content {
+  height: 350px;
+}
+
+/* Projectos styles */
+.projectos-page {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectos-page h1,
+.projectos-page h2,
+.projectos-page h3,
+.projectos-page h4 {
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.projectos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.project-card .MuiCardMedia-root,
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card .MuiCardContent-root,
+.project-card .card-content {
+  padding: 1rem;
+  flex: 1 1 auto;
+}
+
+.project-card .MuiCardActions-root {
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border-color: var(--foreground);
+}
+
+@media (min-width: 1024px) {
+  .projectos-page {
+    padding: 3rem 2rem;
+  }
+}
