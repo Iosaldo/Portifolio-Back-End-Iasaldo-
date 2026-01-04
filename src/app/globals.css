@@ -451,9 +451,12 @@ body {
 .projectos-grid {
   display: flex;
   gap: 56px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center; /* center cards horizontally */
   align-items: flex-start;
-  padding-left: 48px; /* align with left title */
+  max-width: 1000px;
+  margin: 0 auto; /* center the grid container */
+  padding-left: 0;
 }
 .project-card {
   background: #000;
@@ -501,13 +504,30 @@ body {
 }
 
 @media (max-width: 900px) {
-  .projectos-grid { gap: 36px; padding-left: 24px; }
-  .project-card { width: 280px; }
-  .project-card img, .project-card .MuiCardMedia-root { height: 220px; }
+  .projectos-grid {
+    gap: 36px;
+    padding-left: 24px;
+  }
+  .project-card {
+    width: 280px;
+  }
+  .project-card img,
+  .project-card .MuiCardMedia-root {
+    height: 220px;
+  }
 }
 
 @media (max-width: 480px) {
-  .projectos-grid { gap: 18px; padding-left: 16px; overflow-x: auto; }
-  .project-card { width: 220px; }
-  .project-card img, .project-card .MuiCardMedia-root { height: 160px; }
+  .projectos-grid {
+    gap: 18px;
+    padding-left: 16px;
+    overflow-x: auto;
+  }
+  .project-card {
+    width: 220px;
+  }
+  .project-card img,
+  .project-card .MuiCardMedia-root {
+    height: 160px;
+  }
 }
