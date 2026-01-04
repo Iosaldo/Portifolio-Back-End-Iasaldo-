@@ -447,16 +447,19 @@ body {
   }
 }
 
-/* Project cards - arco (top rounded) thumbnails */
+.projectos-page {
+  display: flex;
+  justify-content: center;
+}
 .projectos-grid {
   display: flex;
   gap: 56px;
   flex-wrap: wrap;
-  justify-content: center; /* center cards horizontally */
+  justify-content: center;
   align-items: flex-start;
-  max-width: 1000px;
-  margin: 0 auto; /* center the grid container */
-  padding-left: 0;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
 .project-card {
   background: #000;
@@ -466,7 +469,7 @@ body {
   color: #fff;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.04);
-  width: 320px; /* fixed card width to match grid */
+  width: 320px;
 }
 .project-card .MuiCardActionArea-root {
   display: block;
