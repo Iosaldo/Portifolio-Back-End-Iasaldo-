@@ -26,7 +26,18 @@ function AppContent({ children }) {
       <body className={isRestaurante ? "resto-page" : undefined}>
         {/* Barra de navegação global (oculta na página Restaurante) */}
         {!isRestaurante && (
-          <header style={{ padding: "1rem" }}>
+          <header
+            style={{
+              padding: "1rem",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              zIndex: 1000,
+              backdropFilter: "saturate(180%) blur(6px)",
+              background: "rgba(0,0,0,0.25)",
+            }}
+          >
             <nav
               style={{
                 display: "flex",
@@ -42,22 +53,13 @@ function AppContent({ children }) {
               >
                 Home
               </Button>
-              <Button
-                className="custom-button"
-                variant="text"
-              >
+              <Button className="custom-button" variant="text">
                 Dashboard
               </Button>
-              <Button
-                className="custom-button"
-                variant="text"
-              >
+              <Button className="custom-button" variant="text">
                 Projectos
               </Button>
-              <Button
-                className="custom-button"
-                variant="text"
-              >
+              <Button className="custom-button" variant="text">
                 About
               </Button>
 
@@ -68,11 +70,11 @@ function AppContent({ children }) {
         )}
 
         {/* Conteúdo das páginas */}
-        <main style={{ padding: "1rem" }}>{children}</main>
+        <main style={{ padding: "1rem", paddingTop: "88px" }}>{children}</main>
 
         {/* Barra de rodapé */}
         <footer>
-          <Button href="/Iasaldo_CV.pdf" variant="outlined" download >
+          <Button href="/Iasaldo_CV.pdf" variant="outlined" download>
             Download CV
           </Button>
           <p>© 2025 - Iasaldo</p>

@@ -1,7 +1,5 @@
 "use client";
 import "./home.css";
-import { Avatar } from "@mui/material";
-import SocialCard from "@/components/SocialCard";
 import {
   Box,
   Card,
@@ -15,204 +13,208 @@ import {
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatsPanel from "@/components/dashboard/StatsPanel";
 import ChartsGrid from "@/components/dashboard/ChartsGrid";
-import SkillsPanel from "@/components/dashboard/SkillsPanel";
-import { Inter } from "next/font/google";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import SplitText from "@/components/SplitText";
-// About, Projectos and Dashboard contents inlined below
+import Image from "next/image";
+// Page sections are implemented as local components below for clarity
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
-  function scrollDown() {
-    if (typeof window !== "undefined") {
-      window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-    }
-  }
+function Hero() {
   return (
-    <main className="site-main">
-      <div className="hero-container">
-        <div className="hero-inner">
-          <div className="text-center">
-            <SplitText>Bem-vindo! Que bom ter você aqui!</SplitText>
-          </div>
-          <div data-aos="fade-up">
-            <Avatar
-              alt="Iasaldo"
-              src="/avatar.jpg"
-              sx={{
-                width: 170,
-                height: 170,
-                border: "3px solid var(--foreground)",
-              }}
-              className="avatarhome"
-            />
-          </div>
+    <div className="container">
+      <div className="hero">
+        <h1>
+          Welcome to
+          <br />
+          my portfólio
+        </h1>
+        <button className="minimal-btn">Software Engineering</button>
+      </div>
+      <div className="hero-image">
+        <div className="avatar-wrapper">
+          <Image
+            src="/avatar.jpg"
+            alt="Profile"
+            width={420}
+            height={560}
+            style={{
+              objectFit: "cover",
+              filter: "grayscale(1)",
+              background: "#111",
+              display: "block",
+              transform: "rotate(-12deg)",
+            }}
+            priority
+          />
         </div>
       </div>
-
-      <div className="hero-inner flex">
-        <div className="text-center" data-aos="fade-up">
-          <h1 className="hero-title">Iasaldo Batista</h1>
-          <label className="hero-subtitle">Desenvolvedor Back-End</label>
-          <p className="hero-description">
-            Transfora em sistemas, ideias em APIs, e linhas de código em
-            soluções que funcionam — simples, rápidas e seguras.
-          </p>
-        </div>
-      </div>
-
-      <section id="about" className="page-section">
-        <AboutContent />
-      </section>
-
-      <section id="projectos" className="page-section">
-        <ProjectosContent />
-      </section>
-
-      <section id="dashboard" className="page-section">
-        <DashboardContent />
-      </section>
-    </main>
+    </div>
   );
 }
 
-/* ----- Inlined page contents ----- */
-function AboutContent() {
+function IntroSection() {
   return (
-    <section className="about-page">
-      <div className="about-container">
-        <Avatar
-          alt="Iasaldo"
-          src="/avatar.jpg"
-          sx={{
-            width: 170,
-            height: 170,
-            border: "3px solid var(--foreground)",
-          }}
-          className="avatar"
-        />
-        <div className="about-social-container">
-          <SocialCard />
+    <section className="intro-section">
+      <div className="intro-left">
+        <h2 className="intro-title">Who is Iasaldo?</h2>
+        <p className="intro-text">
+          Software Engineering student focused on Back‑End development, with
+          hands‑on experience in JavaScript, Node.js, Express, REST APIs, and
+          Git/GitHub, acquired through personal projects and continuous
+          learning.
+        </p>
+        <div className="intro-underline" />
+      </div>
+      <div className="intro-right">
+        <div className="intro-avatar-wrapper">
+          <Image
+            src="/avatar.jpg"
+            alt="Iasaldo reading"
+            width={520}
+            height={680}
+            style={{ objectFit: "cover", filter: "grayscale(1)" }}
+            priority
+          />
         </div>
       </div>
-      <div className="card-stack card-stack--padded">
-        <div className="stack-card">
-          <h2 className="stack-title">Sobre Mim</h2>
-          <div className="stack-content">
-            <p>
-              Desenvolvedor em formação, focado em criar soluções digitais
-              funcionais, escaláveis e bem estruturadas. Tenho paixão por
-              transformar ideias em aplicações que entregam valor real, com
-              atenção à qualidade do código, organização e experiência do
-              usuário. Estou comprometido com boas práticas de desenvolvimento e
-              evolução contínua, sempre buscando experiência e técnica e
-              profissional.
-            </p>
+    </section>
+  );
+}
+
+function EducationSection() {
+  return (
+    <section className="education-section">
+      <div className="edu-left">
+        <h2 className="edu-title">Education</h2>
+      </div>
+      <div className="edu-right">
+        <div className="edu-grid">
+          <div className="edu-column">
+            <h4 className="edu-place">Codecademy</h4>
+            <ul>
+              <li>Back-End Engineer — Jun 2024 until now</li>
+              <li>Developer in Training</li>
+            </ul>
+          </div>
+          <div className="edu-column">
+            <h4 className="edu-place">IFAC - Information Technology</h4>
+            <ul>
+              <li>
+                Technical and Professional Course in Information Technology
+              </li>
+              <li>Jul 2021 – Out 2022</li>
+            </ul>
+          </div>
+          <div className="edu-column">
+            <h4 className="edu-place">National High School of São Tomé</h4>
+            <ul>
+              <li>Secondary Education, Science and Technology</li>
+              <li>Set 2015 – Set 2018</li>
+            </ul>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="stack-card">
-          <h2 className="stack-title">Especialidades</h2>
-          <div className="stack-content">
-            <div className="w-full">
-              <div className="accordion">
-                <div className="stack-card-inner">
-                  <h3>Desenvolvimento Front-end</h3>
-                  <ul>
-                    <li>React.js para interfaces interativas</li>
-                    <li>Next.js para aplicações web modernas e otimizadas</li>
-                    <li>Styled Components e TailwindCSS</li>
-                    <li>Implementação de animações e transições suaves</li>
-                  </ul>
-                </div>
-                <div className="stack-card-inner">
-                  <h3>Desenvolvimento Back-end</h3>
-                  <ul>
-                    <li>Node.js e Express para APIs RESTful</li>
-                    <li>Async JavaScript and HTTP Request</li>
-                    <li>Autenticação e Autorização</li>
-                  </ul>
-                </div>
-                <div className="stack-card-inner">
-                  <h3>Advanced Back-End</h3>
-                  <ul>
-                    <li>Controle de Versionamento com Git</li>
-                    <li>SQL, PostgreSQL, Database to a Server</li>
-                    <li>Deploy, JavaScript Testing</li>
-                    <li>API Development with Swagger and OpenAPI</li>
-                  </ul>
+function ProjectsSection() {
+  return (
+    <section id="projectos" className="section">
+      <h3>Project</h3>
+      <div className="projectos-page">
+        <Box className="projectos-grid">
+          <Card className="project-card">
+            <CardActionArea>
+              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Branding Tost" />
+              <CardContent>
+                <Typography className="project-title" gutterBottom variant="h5" component="div">
+                  Branding para Tost
+                </Typography>
+                <Typography className="project-desc" variant="body2">
+                  Branding para Tost, restaurante famoso em São Paulo
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+
+          <Card className="project-card">
+            <CardActionArea>
+              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Cartaz La Sso" />
+              <CardContent>
+                <Typography className="project-title" gutterBottom variant="h5" component="div">
+                  Cartaz para La Sso
+                </Typography>
+                <Typography className="project-desc" variant="body2">
+                  Cartaz para La Sso, um bar no centro de Curitiba
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Box>
+      </div>
+    </section>
+  );
+}
+
+function DashboardSection() {
+  return (
+    <section id="dashboard" className="section">
+      <h3>Skills tracking</h3>
+      <div className="dashboard-main">
+        <div className="projectos">
+          <DashboardHeader />
+          <StatsPanel />
+          <ChartsGrid />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section id="about" className="section">
+      <h3>Contact me</h3>
+      <div className="about-page">
+        <div className="about-container">
+          <div
+            style={{
+              display: "flex",
+              gap: 20,
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <div style={{ maxWidth: 720 }}>
+              <div className="card-stack card-stack--padded">
+                <div className="stack-card">
+                  <h4 className="stack-title">Sobre Mim</h4>
+                  <div className="stack-content">
+                    <p>
+                      Desenvolvedor em formação, focado em criar soluções
+                      digitais funcionais, escaláveis e bem estruturadas. Tenho
+                      paixão por transformar ideias em aplicações que entregam
+                      valor real.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="stack-card">
-          <h2 className="stack-title">Desenvolvimento Profissional</h2>
-          <div className="stack-content">
-            <p>
-              Busco constantemente aprender novas tecnologias e aplicar as
-              melhores práticas de desenvolvimento em meus projetos.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
 }
 
-function ProjectosContent() {
+export default function Home() {
   return (
-    <section className="projectos-page">
-      <Typography variant="h4" component="h1" gutterBottom>
-        Projectos
-      </Typography>
-      <Box className="projectos-grid">
-        <Card className="project-card" sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/aderito-projecto.jpg"
-              alt="Adérito Projecto"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Adérito Projecto
-              </Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                O Learn English Aderito é uma plataforma digital de ensino de
-                inglês, voltada para falantes de português, com foco em
-                aprendizagem prática, personalizada e acessível.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Saber Mais
-            </Button>
-          </CardActions>
-        </Card>
-      </Box>
-    </section>
-  );
-}
-
-function DashboardContent() {
-  return (
-    <section className="dashboard-main">
-      <div className="projectos">
-        <DashboardHeader />
-        <StatsPanel />
-        <SkillsPanel />
-        <ChartsGrid />
-      </div>
-    </section>
+    <main className="site-main">
+      <Hero />
+      <IntroSection />
+      <EducationSection />
+      <ProjectsSection />
+      <DashboardSection />
+      <AboutSection />
+    </main>
   );
 }
