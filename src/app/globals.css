@@ -39,7 +39,9 @@ body {
   align-items: flex-start;
   gap: 48px;
 }
-.hero .welcome { display: none; }
+.hero .welcome {
+  display: none;
+}
 .hero h1 {
   font-family: "Playfair Display", "Times New Roman", Times, serif;
   font-size: 5vw;
@@ -69,6 +71,16 @@ body {
   padding-left: 14px;
   color: #080808;
   background: none;
+}
+/* Ensure section H3 titles (used for Project, Skills, Contact) are visible */
+.section h3 {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 3.6rem;
+  font-weight: 400;
+  margin-bottom: 28px;
+  color: #ffffff;
+  line-height: 1.02;
+  letter-spacing: -1px;
 }
 .section p,
 .section li {
