@@ -28,7 +28,7 @@ export default function PieChartCard() {
     >
       <Card className="chart-card">
         <CardHeader>
-          <CardTitle>Percentagem de Exame por Linguagem</CardTitle>
+          <CardTitle>Percentagem de Exame</CardTitle>
         </CardHeader>
         <CardContent className="chart-card-content">
           <ResponsiveContainer width="100%" height="100%">
