@@ -128,7 +128,7 @@ function ProjectsSection() {
                 <Typography className="project-title" gutterBottom variant="h5" component="div">
                   Branding para Tost
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography className="project-desc" variant="body2">
                   Branding para Tost, restaurante famoso em São Paulo
                 </Typography>
               </CardContent>
@@ -142,22 +142,8 @@ function ProjectsSection() {
                 <Typography className="project-title" gutterBottom variant="h5" component="div">
                   Cartaz para La Sso
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography className="project-desc" variant="body2">
                   Cartaz para La Sso, um bar no centro de Curitiba
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="project-card">
-            <CardActionArea>
-              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Cartaz Cinema" />
-              <CardContent>
-                <Typography className="project-title" gutterBottom variant="h5" component="div">
-                  Cartaz para a Sociedade
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  Cartaz para a Sociedade de Cinema Brasil
                 </Typography>
               </CardContent>
             </CardActionArea>
