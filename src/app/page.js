@@ -13,31 +13,112 @@ import {
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatsPanel from "@/components/dashboard/StatsPanel";
 import ChartsGrid from "@/components/dashboard/ChartsGrid";
-import SkillsPanel from "@/components/dashboard/SkillsPanel";
+import Image from "next/image";
 // Page sections are implemented as local components below for clarity
 
 function Hero() {
   return (
-    <header className="hero">
-      <div className="hero-left">
-        <h1 className="hero-title">my portfólio</h1>
-        <div style={{ marginTop: 40 }}>
-          <button className="cta-outline">Software Engineering</button>
+    <div className="container">
+      <div className="hero">
+        <h1>
+          Welcome to
+          <br />
+          my portfólio
+        </h1>
+        <button className="minimal-btn">Software Engineering</button>
+      </div>
+      <div className="hero-image">
+        <div className="avatar-wrapper">
+          <Image
+            src="/avatar.jpg"
+            alt="Profile"
+            width={420}
+            height={560}
+            style={{
+              objectFit: "cover",
+              filter: "grayscale(1)",
+              background: "#111",
+              display: "block",
+              transform: "rotate(-12deg)",
+            }}
+            priority
+          />
         </div>
       </div>
-      <div className="hero-right">
-        <div className="hero-oval">
-          <img src="/avatar.jpg" alt="Iasaldo" />
+    </div>
+  );
+}
+
+function IntroSection() {
+  return (
+    <section className="intro-section">
+      <div className="intro-left">
+        <h2 className="intro-title">Who is Iasaldo?</h2>
+        <p className="intro-text">
+          Software Engineering student focused on Back‑End development, with
+          hands‑on experience in JavaScript, Node.js, Express, REST APIs, and
+          Git/GitHub, acquired through personal projects and continuous
+          learning.
+        </p>
+        <div className="intro-underline" />
+      </div>
+      <div className="intro-right">
+        <div className="intro-avatar-wrapper">
+          <Image
+            src="/avatar.jpg"
+            alt="Iasaldo reading"
+            width={520}
+            height={680}
+            style={{ objectFit: "cover", filter: "grayscale(1)" }}
+            priority
+          />
         </div>
       </div>
-    </header>
+    </section>
+  );
+}
+
+function EducationSection() {
+  return (
+    <section className="education-section">
+      <div className="edu-left">
+        <h2 className="edu-title">Education</h2>
+      </div>
+      <div className="edu-right">
+        <div className="edu-grid">
+          <div className="edu-column">
+            <h4 className="edu-place">Codecademy</h4>
+            <ul>
+              <li>Back-End Engineer — Jun 2024 until now</li>
+              <li>Developer in Training</li>
+            </ul>
+          </div>
+          <div className="edu-column">
+            <h4 className="edu-place">IFAC - Information Technology</h4>
+            <ul>
+              <li>
+                Technical and Professional Course in Information Technology
+              </li>
+              <li>Jul 2021 – Out 2022</li>
+            </ul>
+          </div>
+          <div className="edu-column">
+            <h4 className="edu-place">National High School of São Tomé</h4>
+            <ul>
+              <li>Secondary Education, Science and Technology</li>
+              <li>Set 2015 – Set 2018</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
 function ProjectsSection() {
   return (
     <section id="projectos" className="section">
-      <h3>Projectos</h3>
+      <h3>Project</h3>
       <div className="projectos-page">
         <Box className="projectos-grid">
           <Card className="project-card" sx={{ maxWidth: 345 }}>
@@ -73,12 +154,11 @@ function ProjectsSection() {
 function DashboardSection() {
   return (
     <section id="dashboard" className="section">
-      <h3>Dashboard</h3>
+      <h3>Skills tracking</h3>
       <div className="dashboard-main">
         <div className="projectos">
           <DashboardHeader />
           <StatsPanel />
-          <SkillsPanel />
           <ChartsGrid />
         </div>
       </div>
@@ -89,7 +169,7 @@ function DashboardSection() {
 function AboutSection() {
   return (
     <section id="about" className="section">
-      <h3>Sobre</h3>
+      <h3>Contact me</h3>
       <div className="about-page">
         <div className="about-container">
           <div
@@ -127,6 +207,8 @@ export default function Home() {
   return (
     <main className="site-main">
       <Hero />
+      <IntroSection />
+      <EducationSection />
       <ProjectsSection />
       <DashboardSection />
       <AboutSection />
