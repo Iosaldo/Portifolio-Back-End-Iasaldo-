@@ -1,17 +1,13 @@
 // src/app/layout.js
 "use client";
-import { Avatar, Button, Stack } from "@mui/material";
 import "./globals.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import * as React from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { ThemeProvider, useTheme } from "../components/ThemeProvider"; // Importe o provedor e o hook
-import Switch from "../components/Switch";
 
 function AppContent({ children }) {
-  const { isDarkMode, toggleDarkMode } = useTheme(); // Use o hook para obter o estado e a função de alternância
   const router = useRouter();
   const pathname = usePathname();
   React.useEffect(() => {
@@ -22,7 +18,7 @@ function AppContent({ children }) {
     .startsWith("/restaurantepage");
 
   return (
-    <html lang="pt-BR" className={isDarkMode ? "dark" : "light"}>
+    <html lang="pt-BR" className={"light"}>
       <body className={isRestaurante ? "resto-page" : undefined}>
         {/* Barra de navegação global (oculta na página Restaurante) */}
         {!isRestaurante && (
@@ -46,28 +42,16 @@ function AppContent({ children }) {
                 width: "100%",
               }}
             >
-              <Button
+              <button
                 onClick={() => router.push("/")}
                 className="custom-button"
-                variant="text"
               >
                 Home
-              </Button>
-              <Button className="custom-button" variant="text">
-                Dashboard
-              </Button>
-              <Button className="custom-button" variant="text">
-                Project
-              </Button>
-              <Button className="custom-button" variant="text">
-                Skills tracking
-              </Button>
-              <Button className="custom-button" variant="text">
-                About
-              </Button>
-
-              {/* Dark Mode Toggle (custom Switch) */}
-              <Switch />
+              </button>
+              <button className="custom-button">Dashboard</button>
+              <button className="custom-button">Project</button>
+              <button className="custom-button">Skills tracking</button>
+              <button className="custom-button">About</button>
             </nav>
           </header>
         )}
@@ -77,9 +61,9 @@ function AppContent({ children }) {
 
         {/* Barra de rodapé */}
         <footer>
-          <Button href="/Iasaldo_CV.pdf" variant="outlined" download>
+          <a href="/Iasaldo_CV.pdf" download>
             Download CV
-          </Button>
+          </a>
           <p>© 2025 - Iasaldo</p>
         </footer>
       </body>
@@ -88,9 +72,5 @@ function AppContent({ children }) {
 }
 
 export default function RootLayout({ children }) {
-  return (
-    <ThemeProvider>
-      <AppContent>{children}</AppContent>
-    </ThemeProvider>
-  );
+  return <AppContent>{children}</AppContent>;
 }

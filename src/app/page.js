@@ -1,8 +1,7 @@
 "use client";
 import "./home.css";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import StatsPanel from "@/components/dashboard/StatsPanel";
-import PieChartCard from "@/components/charts/PieChartCard";
+import SkillsCard from "@/components/SkillsCard";
 import Image from "next/image";
 // Page sections are implemented as local components below for clarity
 
@@ -16,6 +15,16 @@ function Hero() {
           my portfólio
         </h1>
         <button className="minimal-btn">Software Engineering</button>
+        <div className="intro-block">
+          <h2 className="intro-title">Who is Iasaldo?</h2>
+          <p className="intro-text">
+            Software Engineering student focused on Back‑End development, with
+            hands‑on experience in JavaScript, Node.js, Express, REST APIs, and
+            Git/GitHub, acquired through personal projects and continuous
+            learning.
+          </p>
+          <div className="intro-underline" />
+        </div>
       </div>
       <div className="hero-image">
         <div className="avatar-wrapper">
@@ -36,35 +45,6 @@ function Hero() {
         </div>
       </div>
     </div>
-  );
-}
-
-function IntroSection() {
-  return (
-    <section className="intro-section">
-      <div className="intro-left">
-        <h2 className="intro-title">Who is Iasaldo?</h2>
-        <p className="intro-text">
-          Software Engineering student focused on Back‑End development, with
-          hands‑on experience in JavaScript, Node.js, Express, REST APIs, and
-          Git/GitHub, acquired through personal projects and continuous
-          learning.
-        </p>
-        <div className="intro-underline" />
-      </div>
-      <div className="intro-right">
-        <div className="intro-avatar-wrapper">
-          <Image
-            src="/avatar.jpg"
-            alt="Iasaldo reading"
-            width={520}
-            height={680}
-            style={{ objectFit: "cover", filter: "grayscale(1)" }}
-            priority
-          />
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -114,31 +94,67 @@ function ProjectsSection() {
         </div>
         <div className="projectos-right">
           <div className="projectos-grid">
-            <div className="project-card simple-card">
-              <div className="project-thumb">
-                <img src="/aderito-projecto.jpg" alt="Branding Tost" />
+            <div className="project-card-modern">
+              <div className="project-card-img">
+                <div className="project-card-img-fill" />
               </div>
-              <p className="project-desc">
-                Branding para Tost, restaurante famoso em São Paulo
-              </p>
+              <div className="project-card-title">Branding Tost</div>
+              <div className="project-card-subtitle">
+                Branding para Tost, restaurante famoso em São Paulo.
+              </div>
+              <hr className="project-card-divider" />
+              <div className="project-card-footer">
+                <div className="project-card-price"><span>PT</span> design</div>
+                <button className="project-card-btn" aria-label="Ver projeto Tost">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img">
+                    <path d="M80 112c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zm56 80c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm0 96c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm-56 80c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div className="project-card simple-card">
-              <div className="project-thumb">
-                <img src="/aderito-projecto.jpg" alt="Cartaz La Sso" />
+            <div className="project-card-modern">
+              <div className="project-card-img">
+                <div className="project-card-img-fill" />
               </div>
-              <p className="project-desc">
-                Cartaz para La Sso, um bar no centro de Curitiba
-              </p>
+              <div className="project-card-title">Cartaz La Sso</div>
+              <div className="project-card-subtitle">
+                Cartaz para La Sso, um bar no centro de Curitiba.
+              </div>
+              <hr className="project-card-divider" />
+              <div className="project-card-footer">
+                <div className="project-card-price"><span>PT</span> design</div>
+                <button className="project-card-btn" aria-label="Ver projeto La Sso">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img">
+                    <path d="M80 112c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zm56 80c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm0 96c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm-56 80c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div className="project-card simple-card">
-              <div className="project-thumb">
-                <img src="/aderito-projecto.jpg" alt="Cartaz Cinema" />
+            <div className="project-card-modern">
+              <div className="project-card-img">
+                <Image
+                  src="/API.jpg"
+                  alt="Quick-Post API"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: "cover" }}
+                />
               </div>
-              <p className="project-desc">
-                Cartaz para a Sociedade de Cinema Brasil
-              </p>
+              <div className="project-card-title">Quick-Post API</div>
+              <div className="project-card-subtitle">
+                API minimalista para posts rápidos, endpoints REST simples e pronta para deploy.
+              </div>
+              <hr className="project-card-divider" />
+              <div className="project-card-footer">
+                <div className="project-card-price"></div>
+                <button className="project-card-btn" aria-label="Ver Quick-Post API">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img">
+                    <path d="M80 112c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zm56 80c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm0 96c0-8.8 7.2-16 16-16H360c8.8 0 16 7.2 16 16s-7.2 16-16 16H152c-8.8 0-16-7.2-16-16zm-56 80c0-8.8 7.2-16 16-16H416c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16z" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -150,17 +166,16 @@ function ProjectsSection() {
 function DashboardSection() {
   return (
     <section id="dashboard" className="section">
-      <div className="dashboard-page">
-        <div className="dashboard-left">
-          <h3>Skills tracking</h3>
+      <div className="learning-focus-page">
+        <div className="learning-focus-left">
+          <h3>Learning Focus</h3>
         </div>
-        <div className="dashboard-right">
-          <div className="dashboard-controls">
-            <DashboardHeader />
-            <StatsPanel />
+        <div className="learning-focus-right">
+          <div className="learning-focus-controls">
+            <DashboardHeader title="" />
           </div>
-          <div className="dashboard-charts">
-            <PieChartCard />
+          <div className="learning-focus-charts">
+            <SkillsCard />
           </div>
         </div>
       </div>
@@ -171,7 +186,7 @@ function DashboardSection() {
 function AboutSection() {
   return (
     <section id="about" className="section">
-      <h3>Contact me</h3>
+      <h3>Get in Touch</h3>
       <div className="about-page">
         <div className="about-container">
           <div
@@ -209,10 +224,9 @@ export default function Home() {
   return (
     <main className="site-main">
       <Hero />
-      <IntroSection />
-      <EducationSection />
       <ProjectsSection />
       <DashboardSection />
+      <EducationSection />
       <AboutSection />
     </main>
   );

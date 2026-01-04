@@ -1,11 +1,10 @@
 "use client";
 
-export default function DashboardHeader({
-  title = "Estatísticas de Linguagens",
-}) {
+export default function DashboardHeader({ title }) {
+  if (!title) return null;
   return (
     <header className="dashboard-header">
-      <h1 className="dashboard-title">{title}</h1>
+      <h2 className="dashboard-title">{title}</h2>
     </header>
   );
 }
