@@ -1,79 +1,49 @@
 html,
 body {
   background: #000 !important;
-  .projectos-grid {
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-  .project-card {
-    background: #000;
-    border-radius: 18px;
-    padding: 0;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
-    color: #fff;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    display: flex;
-    flex-direction: column;
-    transition: transform 220ms ease, box-shadow 220ms ease;
-    will-change: transform;
-  }
-  .project-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 18px 50px rgba(0,0,0,0.65);
-  }
-  .project-card.MuiPaper-root,
-  .project-card.MuiCard-root {
-    background: #000;
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-  }
-  .project-card .MuiCardActionArea-root {
-    display: block;
-    height: 100%;
-  }
-  .project-card .MuiCardMedia-root,
-  .project-card img {
-    width: 100%;
-    height: 200px; /* reduzido para dar espaço ao conteúdo */
-    object-fit: cover;
-    display: block;
-    /* arco mais pronunciado */
-    border-top-left-radius: 160px;
-    border-top-right-radius: 160px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    overflow: hidden;
-  }
-  .project-card .MuiCardContent-root {
-    padding: 18px 16px;
-    text-align: left;
-  }
-  .project-card .MuiTypography-root,
-  .project-card .project-title {
-    color: #fff;
-    text-align: left;
-  }
-  .project-card .MuiCardActions-root {
-    padding: 12px 16px 20px 16px;
-  }
+  color: #fff;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  @media (max-width: 900px) {
-    .project-card .MuiCardMedia-root,
-    .project-card img {
-      height: 180px;
-      border-top-left-radius: 120px;
-      border-top-right-radius: 120px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .projectos-grid { gap: 18px; }
-    .project-card .MuiCardMedia-root,
-    .project-card img { height: 140px; border-top-left-radius: 80px; border-top-right-radius: 80px; }
-  }
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  min-height: 100vh;
+  line-height: 1.7;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+.hero .welcome { display: none; }
+.hero h1 {
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  font-size: 5vw;
+  font-weight: 400;
   line-height: 1.05;
   margin-bottom: 32px;
   letter-spacing: -2px;
@@ -500,6 +470,18 @@ body {
 }
 .project-card .MuiCardActions-root {
   padding: 12px 16px 20px 16px;
+}
+
+/* Ensure project title is visible and prominent */
+.project-card .project-title {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+  display: block;
+}
+.project-card .MuiCardContent-root {
+  color: #e6e6e6;
 }
 
 @media (max-width: 900px) {
