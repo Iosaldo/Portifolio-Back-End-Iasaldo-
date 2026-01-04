@@ -121,34 +121,46 @@ function ProjectsSection() {
       <h3>Project</h3>
       <div className="projectos-page">
         <Box className="projectos-grid">
-          <Card className="project-card" sx={{ maxWidth: 345 }}>
+          <Card className="project-card">
             <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image="/aderito-projecto.jpg"
-                alt="Adérito Projecto"
-              />
+              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Branding Tost" />
               <CardContent>
-                <Typography
-                  className="project-title"
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                >
-                  Adérito Projecto
+                <Typography className="project-title" gutterBottom variant="h5" component="div">
+                  Branding para Tost
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  O Learn English Aderito é uma plataforma digital de ensino de
-                  inglês, voltada para falantes de português.
+                  Branding para Tost, restaurante famoso em São Paulo
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Saber Mais
-              </Button>
-            </CardActions>
+          </Card>
+
+          <Card className="project-card">
+            <CardActionArea>
+              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Cartaz La Sso" />
+              <CardContent>
+                <Typography className="project-title" gutterBottom variant="h5" component="div">
+                  Cartaz para La Sso
+                </Typography>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  Cartaz para La Sso, um bar no centro de Curitiba
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+
+          <Card className="project-card">
+            <CardActionArea>
+              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Cartaz Cinema" />
+              <CardContent>
+                <Typography className="project-title" gutterBottom variant="h5" component="div">
+                  Cartaz para a Sociedade
+                </Typography>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  Cartaz para a Sociedade de Cinema Brasil
+                </Typography>
+              </CardContent>
+            </CardActionArea>
           </Card>
         </Box>
       </div>
