@@ -90,15 +90,15 @@ body {
 }
 .card {
   border: none;
-  background: #111;
+  background: #000;
   border-radius: 18px;
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
   padding: 28px 22px;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, background 0.15s;
 }
 .card:hover {
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
-  background: #222;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  background: #0a0a0a;
 }
 .skill {
   margin-bottom: 18px;
