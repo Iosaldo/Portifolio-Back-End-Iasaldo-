@@ -130,7 +130,12 @@ function ProjectsSection() {
                 alt="Adérito Projecto"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography
+                  className="project-title"
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
                   Adérito Projecto
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
