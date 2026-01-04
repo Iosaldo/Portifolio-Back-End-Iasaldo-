@@ -57,7 +57,10 @@ function AppContent({ children }) {
                 Dashboard
               </Button>
               <Button className="custom-button" variant="text">
-                Projectos
+                Project
+              </Button>
+              <Button className="custom-button" variant="text">
+                Skills tracking
               </Button>
               <Button className="custom-button" variant="text">
                 About

@@ -1,18 +1,8 @@
 "use client";
 import "./home.css";
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-} from "@mui/material";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatsPanel from "@/components/dashboard/StatsPanel";
-import ChartsGrid from "@/components/dashboard/ChartsGrid";
+import PieChartCard from "@/components/charts/PieChartCard";
 import Image from "next/image";
 // Page sections are implemented as local components below for clarity
 
@@ -118,37 +108,40 @@ function EducationSection() {
 function ProjectsSection() {
   return (
     <section id="projectos" className="section">
-      <h3>Project</h3>
       <div className="projectos-page">
-        <Box className="projectos-grid">
-          <Card className="project-card">
-            <CardActionArea>
-              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Branding Tost" />
-              <CardContent>
-                <Typography className="project-title" gutterBottom variant="h5" component="div">
-                  Branding para Tost
-                </Typography>
-                <Typography className="project-desc" variant="body2">
-                  Branding para Tost, restaurante famoso em São Paulo
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+        <div className="projectos-left">
+          <h3>Project</h3>
+        </div>
+        <div className="projectos-right">
+          <div className="projectos-grid">
+            <div className="project-card simple-card">
+              <div className="project-thumb">
+                <img src="/aderito-projecto.jpg" alt="Branding Tost" />
+              </div>
+              <p className="project-desc">
+                Branding para Tost, restaurante famoso em São Paulo
+              </p>
+            </div>
 
-          <Card className="project-card">
-            <CardActionArea>
-              <CardMedia component="img" image="/aderito-projecto.jpg" alt="Cartaz La Sso" />
-              <CardContent>
-                <Typography className="project-title" gutterBottom variant="h5" component="div">
-                  Cartaz para La Sso
-                </Typography>
-                <Typography className="project-desc" variant="body2">
-                  Cartaz para La Sso, um bar no centro de Curitiba
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Box>
+            <div className="project-card simple-card">
+              <div className="project-thumb">
+                <img src="/aderito-projecto.jpg" alt="Cartaz La Sso" />
+              </div>
+              <p className="project-desc">
+                Cartaz para La Sso, um bar no centro de Curitiba
+              </p>
+            </div>
+
+            <div className="project-card simple-card">
+              <div className="project-thumb">
+                <img src="/aderito-projecto.jpg" alt="Cartaz Cinema" />
+              </div>
+              <p className="project-desc">
+                Cartaz para a Sociedade de Cinema Brasil
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -157,12 +150,18 @@ function ProjectsSection() {
 function DashboardSection() {
   return (
     <section id="dashboard" className="section">
-      <h3>Skills tracking</h3>
-      <div className="dashboard-main">
-        <div className="projectos">
-          <DashboardHeader />
-          <StatsPanel />
-          <ChartsGrid />
+      <div className="dashboard-page">
+        <div className="dashboard-left">
+          <h3>Skills tracking</h3>
+        </div>
+        <div className="dashboard-right">
+          <div className="dashboard-controls">
+            <DashboardHeader />
+            <StatsPanel />
+          </div>
+          <div className="dashboard-charts">
+            <PieChartCard />
+          </div>
         </div>
       </div>
     </section>
