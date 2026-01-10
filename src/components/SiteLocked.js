@@ -1,8 +1,33 @@
+"use client";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useLanguageStore from "@/store/useLanguageStore";
+
+const TRANSLATIONS = {
+  pt: {
+    welcome: "Bem-vindo ao Desafio!",
+    description:
+      "Complete o quiz de programação para desbloquear o portfólio →",
+    lockTitle: "🔒 Portfólio Bloqueado",
+    lockMessage:
+      "Complete o desafio de programação para desbloquear o conteúdo completo!",
+    startChallenge: "Iniciar Desafio",
+  },
+  en: {
+    welcome: "Welcome to the Challenge!",
+    description: "Complete the programming quiz to unlock the portfolio →",
+    lockTitle: "🔒 Portfolio Locked",
+    lockMessage:
+      "Complete the programming challenge to unlock the full content!",
+    startChallenge: "Start Challenge",
+  },
+};
 
 export default function SiteLocked() {
   const [showAlert, setShowAlert] = useState(true);
+  const { language } = useLanguageStore();
+  const t = TRANSLATIONS[language];
 
   useEffect(() => {
     // Mostra o alerta após 1 segundo
@@ -60,10 +85,10 @@ export default function SiteLocked() {
               <span style={{ fontSize: "2rem" }}>🎯</span>
               <div>
                 <div style={{ fontWeight: "bold", marginBottom: "5px" }}>
-                  Bem-vindo ao Desafio!
+                  {t.welcome}
                 </div>
                 <div style={{ fontSize: "0.9rem", opacity: 0.9 }}>
-                  Complete o quiz de programação para desbloquear o portfólio →
+                  {t.description}
                 </div>
               </div>
               <button
@@ -88,11 +113,10 @@ export default function SiteLocked() {
         </Link>
       )}
 
-      <h1>🔒 Portfólio Bloqueado</h1>
+      <h1>{t.lockTitle}</h1>
 
       <p style={{ maxWidth: 500, opacity: 0.7, marginTop: "20px" }}>
-        Este site é interativo. Para veres o conteúdo completo precisas
-        completar o desafio.
+        {t.lockMessage}
       </p>
 
       <Link href="/challenge">
@@ -118,7 +142,7 @@ export default function SiteLocked() {
             e.target.style.transform = "scale(1)";
           }}
         >
-          🧠 Ir para o desafio
+          🧠 {t.startChallenge}
         </button>
       </Link>
 

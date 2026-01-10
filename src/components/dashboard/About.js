@@ -1,9 +1,28 @@
+"use client";
+
+import useLanguageStore from "@/store/useLanguageStore";
 import "../../app/home.css";
 
+const TRANSLATIONS = {
+  pt: {
+    title: "Sobre Mim",
+    description:
+      "Desenvolvedor Back-End em formação, focado na construção de APIs REST bem estruturadas e escaláveis. Atualmente em busca de uma oportunidade de estágio para evoluir em ambiente profissional.",
+  },
+  en: {
+    title: "About Me",
+    description:
+      "Back-End Developer in training, focused on building well-structured and scalable REST APIs. Currently seeking an internship opportunity to grow in a professional environment.",
+  },
+};
+
 export default function About() {
+  const { language } = useLanguageStore();
+  const t = TRANSLATIONS[language];
+
   return (
     <section id="about" className="section">
-      <h3>About Me</h3>
+      <h3>{t.title}</h3>
       <div className="about-page">
         <div className="about-container">
           <div
@@ -19,12 +38,7 @@ export default function About() {
               <div className="card-stack card-stack--padded">
                 <div className="stack-card">
                   <div className="stack-content">
-                    <p>
-                      Desenvolvedor Back-End em formação, focado na construção
-                      de APIs REST bem estruturadas e escaláveis. Atualmente em
-                      busca de uma oportunidade de estágio para evoluir em
-                      ambiente profissional.
-                    </p>
+                    <p>{t.description}</p>
                     <div className="social-links">
                       <a
                         href="https://github.com/Iosaldo"
