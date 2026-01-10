@@ -1,6 +1,8 @@
 "use client";
 
 import useLanguageStore from "@/store/useLanguageStore";
+import AnimatedContent from "@/components/AnimatedContent";
+import AnimatedText from "@/components/AnimatedText";
 import "../../app/home.css";
 
 const TRANSLATIONS = {
@@ -29,35 +31,63 @@ export default function Education() {
   const t = TRANSLATIONS[language];
 
   return (
-    <section className="education-section">
-      <div className="edu-left">
-        <h2 className="edu-title">{t.title}</h2>
-      </div>
+    <section id="education" className="education-section">
+      <AnimatedContent
+        direction="horizontal"
+        reverse={true}
+        distance={80}
+        duration={1}
+      >
+        <div className="edu-left">
+          <AnimatedText text={t.title} className="edu-title" as="h2" />
+        </div>
+      </AnimatedContent>
       <div className="edu-right">
         <div className="edu-grid">
-          <div className="edu-column">
-            <h4 className="edu-place">{t.codecademy}</h4>
-            <ul>
-              <li>REST APIs</li>
-              <li>Databases</li>
-              <li>Authentication & Authorization ({t.inProgress})</li>
-              <li>Backend fundamentals</li>
-            </ul>
-          </div>
-          <div className="edu-column">
-            <h4 className="edu-place">{t.ifac}</h4>
-            <ul>
-              <li>{t.ifacDesc}</li>
-              <li>Jul 2021 – Out 2022</li>
-            </ul>
-          </div>
-          <div className="edu-column">
-            <h4 className="edu-place">{t.highSchool}</h4>
-            <ul>
-              <li>{t.highSchoolDesc}</li>
-              <li>Set 2015 – Set 2018</li>
-            </ul>
-          </div>
+          <AnimatedContent
+            delay={0.3}
+            distance={100}
+            duration={0.6}
+            direction="horizontal"
+          >
+            <div className="edu-column">
+              <h4 className="edu-place">{t.codecademy}</h4>
+              <ul>
+                <li>REST APIs</li>
+                <li>Databases</li>
+                <li>Authentication & Authorization ({t.inProgress})</li>
+                <li>Backend fundamentals</li>
+              </ul>
+            </div>
+          </AnimatedContent>
+          <AnimatedContent
+            delay={0.6}
+            distance={100}
+            duration={0.6}
+            direction="horizontal"
+          >
+            <div className="edu-column">
+              <h4 className="edu-place">{t.ifac}</h4>
+              <ul>
+                <li>{t.ifacDesc}</li>
+                <li>Jul 2021 – Out 2022</li>
+              </ul>
+            </div>
+          </AnimatedContent>
+          <AnimatedContent
+            delay={0.9}
+            distance={100}
+            duration={0.6}
+            direction="horizontal"
+          >
+            <div className="edu-column">
+              <h4 className="edu-place">{t.highSchool}</h4>
+              <ul>
+                <li>{t.highSchoolDesc}</li>
+                <li>Set 2015 – Set 2018</li>
+              </ul>
+            </div>
+          </AnimatedContent>
         </div>
       </div>
     </section>

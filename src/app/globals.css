@@ -116,12 +116,12 @@ body {
 /* Ensure section H3 titles (used for Project, Skills, Contact) are visible */
 .section h3 {
   font-family: "Playfair Display", "Times New Roman", serif;
-  font-size: 3.6rem;
+  font-size: 6rem;
   font-weight: 400;
-  margin-bottom: 28px;
+  margin: 0;
   color: #ffffff;
-  line-height: 1.02;
-  letter-spacing: -1px;
+  line-height: 0.95;
+  letter-spacing: -2px;
 }
 .section p,
 .section li {
@@ -276,9 +276,6 @@ body {
   /* formato oval */
   border-radius: 50%;
 
-  /* inclinação */
-  transform: rotate(12deg);
-
   /* corta o excesso da imagem */
   overflow: hidden;
 
@@ -292,9 +289,6 @@ body {
   width: 120%;
   height: 120%;
   object-fit: cover;
-
-  /* corrige a inclinação da imagem */
-  transform: rotate(-12deg);
 }
 
 /* Intro section: texto à esquerda e imagem oval à direita */
@@ -398,15 +392,17 @@ body {
   background: #000;
 }
 .edu-left {
-  flex: 0 0 360px;
-  padding-left: 40px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
 }
 .edu-title {
   font-family: "Playfair Display", serif;
-  font-size: 6rem; /* maior como na referência */
-  margin: 0 0 40px 0; /* mais espaçamento abaixo do título */
+  font-size: 6rem;
+  margin: 0;
   color: #fff;
-  line-height: 0.9;
+  line-height: 0.95;
   letter-spacing: -2px;
 }
 .edu-right {
@@ -611,23 +607,36 @@ body {
 
 /* New product-style project cards */
 .project-card-modern {
-  --font-color: #fffafa;
-  --font-color-sub: #ffffff;
-  --bg-color: #000000;
-  --main-color: #292727;
+  --font-color: #3d3d3d;
+  --font-color-sub: #292828;
+  --bg-color: rgba(2, 0, 0, 0.58);
+  --main-color: #ffffff;
   --main-focus: #2d8cf0;
   width: 230px;
   min-height: 300px;
   background: var(--bg-color);
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 20px;
   gap: 10px;
-  color: var(--font-color);
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+}
+
+.project-card-modern:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.project-card-modern:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 
 .project-card-modern:last-child {
@@ -657,15 +666,15 @@ body {
 
 .project-card-title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
-  color: var(--font-color);
+  color: #000000;
 }
 
 .project-card-subtitle {
   font-size: 14px;
   font-weight: 400;
-  color: var(--font-color-sub);
+  color: #f5f5f5;
 }
 
 .project-card-divider {
@@ -685,7 +694,7 @@ body {
 .project-card-price {
   font-size: 12px;
   font-weight: 600;
-  color: var(--font-color);
+  color: #f5f5f5;
   text-transform: uppercase;
 }
 
@@ -1047,4 +1056,169 @@ footer p {
   left: 0;
   color: #fff;
   font-weight: bold;
+}
+
+/* About Section - Card Stack Styles */
+.card-stack {
+  position: relative;
+}
+
+.stack-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 254px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgb(39, 39, 39);
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+  padding: 24px;
+}
+
+.stack-card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.stack-card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.stack-content {
+  color: #f1f1f1;
+  font-weight: 500;
+}
+
+.stack-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 14px;
+  border-radius: 50%;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to top right,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.4)
+  );
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover::before {
+  transform: translateX(100%);
+}
+
+.social-link:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(
+    to top right,
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.4)
+  );
+}
+
+.social-link:active {
+  transform: scale(0.95) rotate(0deg);
+}
+
+.social-link svg {
+  position: relative;
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover svg {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Variações de cor para cada ícone social */
+.social-link:nth-child(1) {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-link:nth-child(1):hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.3);
+}
+
+.social-link:nth-child(2) {
+  border-color: rgba(10, 102, 194, 0.2);
+}
+
+.social-link:nth-child(2):hover {
+  border-color: rgba(10, 102, 194, 0.5);
+  background: linear-gradient(
+    to top right,
+    rgba(10, 102, 194, 0.1),
+    rgba(0, 0, 0, 0.4)
+  );
+  box-shadow: 0 20px 25px -5px rgba(10, 102, 194, 0.3);
+}
+
+.social-link:nth-child(2):hover svg {
+  color: rgba(10, 102, 194, 1);
+}
+
+.social-link:nth-child(3) {
+  border-color: rgba(234, 67, 53, 0.2);
+}
+
+.social-link:nth-child(3):hover {
+  border-color: rgba(234, 67, 53, 0.5);
+  background: linear-gradient(
+    to top right,
+    rgba(234, 67, 53, 0.1),
+    rgba(0, 0, 0, 0.4)
+  );
+  box-shadow: 0 20px 25px -5px rgba(234, 67, 53, 0.3);
+}
+
+.social-link:nth-child(3):hover svg {
+  color: rgba(234, 67, 53, 1);
 }

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import useLanguageStore from "@/store/useLanguageStore";
+import AnimatedText from "@/components/AnimatedText";
+import { motion } from "framer-motion";
 import "../../app/home.css";
 
 const TRANSLATIONS = {
@@ -26,17 +28,34 @@ export default function Hero() {
   return (
     <div className="container">
       <div className="hero">
-        <h1 className="hero-title">Iasaldo</h1>
-        <span className="hero-badge">{t.badge}</span>
-        <div className="intro-block">
+        <AnimatedText text="Iasaldo" className="hero-title" delay={0.2} />
+        <motion.span
+          className="hero-badge"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          {t.badge}
+        </motion.span>
+        <motion.div
+          className="intro-block"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
           <p className="intro-text">{t.intro}</p>
           <a href="#projectos" className="minimal-btn">
             {t.viewProjects}
           </a>
-        </div>
+        </motion.div>
       </div>
       <div className="hero-image">
-        <div className="avatar-wrapper">
+        <motion.div
+          className="avatar-wrapper"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+        >
           <Image
             src="/avatar.jpg"
             alt="Profile"
@@ -47,11 +66,10 @@ export default function Hero() {
               filter: "grayscale(1)",
               background: "#111",
               display: "block",
-              transform: "rotate(-12deg)",
             }}
             priority
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

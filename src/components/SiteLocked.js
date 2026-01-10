@@ -6,17 +6,17 @@ import useLanguageStore from "@/store/useLanguageStore";
 
 const TRANSLATIONS = {
   pt: {
-    welcome: "Bem-vindo ao Desafio!",
+    welcome: "Bem-vindo ao Meu Portfólio!",
     description:
       "Complete o quiz de programação para desbloquear o portfólio →",
     lockTitle: "🔒 Portfólio Bloqueado",
     lockMessage:
-      "Complete o desafio de programação para desbloquear o conteúdo completo!",
+      "Complete o desafio para desbloquear o portfólio completo!",
     startChallenge: "Iniciar Desafio",
   },
   en: {
-    welcome: "Welcome to the Challenge!",
-    description: "Complete the programming quiz to unlock the portfolio →",
+    welcome: "Welcome to my Portfolio!",
+    description: "Complete the quiz to unlock the portfolio →",
     lockTitle: "🔒 Portfolio Locked",
     lockMessage:
       "Complete the programming challenge to unlock the full content!",

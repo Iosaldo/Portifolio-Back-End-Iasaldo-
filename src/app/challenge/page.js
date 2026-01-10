@@ -669,8 +669,67 @@ export default function ChallengePage() {
     router.push("/");
   };
 
+  // Efeito para lidar com a conclusão do quiz
+  useEffect(() => {
+    if (quizCompleted) {
+      if (score >= 80) {
+        // Desbloqueia o portfólio completamente se a pontuação for >= 80
+        setProgress(100);
+      } else {
+        // Reinicia o quiz automaticamente se a pontuação for < 80
+        const timer = setTimeout(() => {
+          restartQuiz();
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [quizCompleted, score, setProgress]);
+
   if (quizCompleted) {
     const finalProgress = (score / 100) * 100;
+
+    // Se a pontuação for menor que 80, mostra mensagem de reinício
+    if (score < 80) {
+      return (
+        <div className="challenge-container">
+          <div className="challenge-card">
+            <h1>{t.quizComplete}</h1>
+            <div className="score-display">
+              <p className="score-label">{t.finalScore}</p>
+              <p className="score-value">{score}/100</p>
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${finalProgress}%` }}
+                />
+              </div>
+            </div>
+            <div className="partial-message">
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  color: "#ff6b6b",
+                }}
+              >
+                {language === "pt"
+                  ? "❌ Pontuação insuficiente! Você precisa de pelo menos 80 pontos."
+                  : "❌ Insufficient score! You need at least 80 points."}
+              </p>
+              <p>
+                {language === "pt"
+                  ? "Reiniciando o quiz em 3 segundos..."
+                  : "Restarting quiz in 3 seconds..."}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Se a pontuação for 80 ou mais, mostra sucesso
+    const unlockedProgress = 100;
+
     return (
       <div className="challenge-container">
         <div className="challenge-card">
@@ -681,38 +740,25 @@ export default function ChallengePage() {
             <div className="progress-bar">
               <div
                 className="progress-fill"
-                style={{ width: `${finalProgress}%` }}
+                style={{ width: `${unlockedProgress}%` }}
               />
             </div>
             <p className="progress-text">
-              {t.portfolioAccess}: {finalProgress.toFixed(0)}%
+              {t.portfolioAccess}: {unlockedProgress}%
             </p>
           </div>
 
-          {finalProgress >= 100 ? (
-            <div className="success-message">
-              <p>{t.congratulations}</p>
-              <button onClick={goToPortfolio} className="btn-primary">
-                {t.viewFullPortfolio}
-              </button>
-            </div>
-          ) : (
-            <div className="partial-message">
-              <p>
-                {t.unlockedPercentage} {finalProgress.toFixed(0)}%{" "}
-                {language === "pt" ? "do portfólio" : "of the portfolio"}.
-              </p>
-              <p>{t.keepTrying}</p>
-              <div className="button-group">
-                <button onClick={restartQuiz} className="btn-secondary">
-                  {t.tryAgain}
-                </button>
-                <button onClick={goToPortfolio} className="btn-primary">
-                  {t.viewPartialPortfolio}
-                </button>
-              </div>
-            </div>
-          )}
+          <div className="success-message">
+            <p>{t.congratulations}</p>
+            <p style={{ fontSize: "1.1rem", marginTop: "10px" }}>
+              {language === "pt"
+                ? "🎉 Portfólio 100% desbloqueado!"
+                : "🎉 Portfolio 100% unlocked!"}
+            </p>
+            <button onClick={goToPortfolio} className="btn-primary">
+              {t.viewFullPortfolio}
+            </button>
+          </div>
         </div>
       </div>
     );
