@@ -1,93 +1,34 @@
-// src/app/layout.js
 "use client";
-import { Avatar, Button, Stack } from "@mui/material";
+
+import { useEffect } from "react";
+import { useProgressStore } from "@/store/useProgressStore";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import "./globals.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Link from "next/link";
-import * as React from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { ThemeProvider, useTheme } from "../components/ThemeProvider"; // Importe o provedor e o hook
-import Switch from "../components/Switch";
-
-function AppContent({ children }) {
-  const { isDarkMode, toggleDarkMode } = useTheme(); // Use o hook para obter o estado e a função de alternância
-  const router = useRouter();
-  const pathname = usePathname();
-  React.useEffect(() => {
-    AOS.init({ duration: 700, easing: "ease-out", once: true });
-  }, []);
-  const isRestaurante = (pathname || "")
-    .toLowerCase()
-    .startsWith("/restaurantepage");
-
-  return (
-    <html lang="pt-BR" className={isDarkMode ? "dark" : "light"}>
-      <body className={isRestaurante ? "resto-page" : undefined}>
-        {/* Barra de navegação global (oculta na página Restaurante) */}
-        {!isRestaurante && (
-          <header
-            style={{
-              padding: "1rem",
-              position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              zIndex: 1000,
-              backdropFilter: "saturate(180%) blur(6px)",
-              background: "rgba(0,0,0,0.25)",
-            }}
-          >
-            <nav
-              style={{
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <Button
-                onClick={() => router.push("/")}
-                className="custom-button"
-                variant="text"
-              >
-                Home
-              </Button>
-              <Button className="custom-button" variant="text">
-                Dashboard
-              </Button>
-              <Button className="custom-button" variant="text">
-                Projectos
-              </Button>
-              <Button className="custom-button" variant="text">
-                About
-              </Button>
-
-              {/* Dark Mode Toggle (custom Switch) */}
-              <Switch />
-            </nav>
-          </header>
-        )}
-
-        {/* Conteúdo das páginas */}
-        <main style={{ padding: "1rem", paddingTop: "88px" }}>{children}</main>
-
-        {/* Barra de rodapé */}
-        <footer>
-          <Button href="/Iasaldo_CV.pdf" variant="outlined" download>
-            Download CV
-          </Button>
-          <p>© 2025 - Iasaldo</p>
-        </footer>
-      </body>
-    </html>
-  );
-}
 
 export default function RootLayout({ children }) {
+  const { progress } = useProgressStore();
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (progress < 100) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      body.style.height = "100vh";
+    } else {
+      html.style.overflow = "auto";
+      body.style.overflow = "auto";
+      body.style.height = "auto";
+    }
+  }, [progress]);
+
   return (
-    <ThemeProvider>
-      <AppContent>{children}</AppContent>
-    </ThemeProvider>
+    <html lang="en">
+      <body>
+        <DashboardHeader />
+        <main style={{ paddingTop: "80px" }}>{children}</main>
+      </body>
+    </html>
   );
 }

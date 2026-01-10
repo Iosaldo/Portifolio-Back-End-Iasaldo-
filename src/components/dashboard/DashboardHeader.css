@@ -1,0 +1,40 @@
+.dashboard-header {
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(180%) blur(6px);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-header nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.dashboard-header nav button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.dashboard-header nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.locked {
+  pointer-events: none;
+  opacity: 0.4;
+  filter: blur(1px);
+}
