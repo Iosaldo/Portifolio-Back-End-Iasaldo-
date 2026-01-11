@@ -101,7 +101,7 @@ body {
 }
 
 .section {
-  padding: 320px 40px 80px 40px;
+  padding: 120px 40px 80px 40px;
   background: #000;
 }
 .section h2 {
@@ -388,7 +388,7 @@ body {
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  padding: 280px 40px 80px 40px;
+  padding: 280px 40px 240px 40px;
   background: #000;
 }
 .edu-left {
@@ -726,6 +726,21 @@ body {
 
 .project-card-img:hover {
   transform: translateY(-3px);
+}
+
+/* About Me Section Styles */
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 400px;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
 .project-card-btn:hover {
