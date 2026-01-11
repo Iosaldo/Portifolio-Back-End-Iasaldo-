@@ -1,35 +1,17 @@
-const pool = require("../config/db");
+import db from "../config/db.js";
 
-class FeedbackService {
-  async getAllFeedbacks() {
-    const result = await pool.query(
-      "SELECT * FROM feedbacks ORDER BY created_at DESC"
-    );
-    return result.rows;
-  }
+export async function create(name, message, rating) {
+  const result = await db.query(
+    "INSERT INTO feedback (name, message, rating) VALUES ($1, $2, $3) RETURNING *",
+    [name, message, rating]
+  );
 
-  async createFeedback(name, message, rating = 5) {
-    const result = await pool.query(
-      "INSERT INTO feedbacks (name, message, rating) VALUES ($1, $2, $3) RETURNING *",
-      [name, message, rating]
-    );
-    return result.rows[0];
-  }
-
-  async getFeedbackById(id) {
-    const result = await pool.query("SELECT * FROM feedbacks WHERE id = $1", [
-      id,
-    ]);
-    return result.rows[0];
-  }
-
-  async deleteFeedback(id) {
-    const result = await pool.query(
-      "DELETE FROM feedbacks WHERE id = $1 RETURNING *",
-      [id]
-    );
-    return result.rows[0];
-  }
+  return result.rows[0];
 }
 
-module.exports = new FeedbackService();
+export async function getAll() {
+  const result = await db.query(
+    "SELECT * FROM feedback ORDER BY created_at DESC"
+  );
+  return result.rows;
+}

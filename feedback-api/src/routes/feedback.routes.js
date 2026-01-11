@@ -1,24 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const feedbackController = require("../controllers/feedback.controller");
-const { validateFeedback } = require("../middlewares/validate");
-const { createFeedbackLimiter } = require("../middlewares/rateLimit");
+import { Router } from "express";
+import { createFeedback, getFeedbacks } from "../controllers/feedback.controller.js";
+import rateLimit from "../middlewares/rateLimit.js";
+import validate from "../middlewares/validate.js";
 
-// GET /api/feedback - Listar todos os feedbacks
-router.get("/", feedbackController.getAll);
+const router = Router();
 
-// GET /api/feedback/:id - Buscar feedback por ID
-router.get("/:id", feedbackController.getById);
+router.get("/", getFeedbacks);
+router.post("/", rateLimit, validate, createFeedback);
 
-// POST /api/feedback - Criar novo feedback (com validação e rate limit)
-router.post(
-  "/",
-  createFeedbackLimiter,
-  validateFeedback,
-  feedbackController.create
-);
-
-// DELETE /api/feedback/:id - Deletar feedback
-router.delete("/:id", feedbackController.delete);
-
-module.exports = router;
+export default router;

@@ -18,7 +18,9 @@ export default function FeedbackItem({ data }) {
       </div>
       <p className="feedback-message">{data.message}</p>
       <span className="feedback-date">
-        {new Date(data.created_at).toLocaleDateString()}
+        {new Date(data.createdAt || data.created_at).toLocaleDateString(
+          "pt-BR"
+        )}
       </span>
     </StyledCard>
   );
