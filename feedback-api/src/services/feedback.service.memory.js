@@ -1,20 +1,5 @@
 // Banco de dados em memória (para desenvolvimento/teste)
-let feedbacks = [
-  {
-    id: 1,
-    name: "João Silva",
-    message: "Excelente portfólio! Design muito limpo e profissional.",
-    rating: 5,
-    created_at: new Date("2026-01-10T10:00:00"),
-  },
-  {
-    id: 2,
-    name: "Maria Santos",
-    message: "Adorei os projetos apresentados. Muito criativo!",
-    rating: 5,
-    created_at: new Date("2026-01-09T15:30:00"),
-  },
-];
+let feedbacks = [];
 
 let nextId = 3;
 
