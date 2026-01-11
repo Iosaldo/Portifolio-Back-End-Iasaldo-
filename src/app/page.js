@@ -10,6 +10,7 @@ import Projects from "@/components/dashboard/Projects";
 import Skills from "@/components/dashboard/Skills";
 import Education from "@/components/dashboard/Education";
 import About from "@/components/dashboard/About";
+import FeedbackSection from "@/components/feedback/FeedbackSection";
 
 export default function Home() {
   const { progress } = useProgressStore();
@@ -32,6 +33,7 @@ export default function Home() {
       <Skills />
       <Education />
       <About />
+      {progress === 100 && <FeedbackSection />}
     </>
   );
 }

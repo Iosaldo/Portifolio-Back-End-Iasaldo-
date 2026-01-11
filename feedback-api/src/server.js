@@ -1,0 +1,10 @@
+const app = require("./app");
+require("dotenv").config();
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`\n🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`📡 API: http://localhost:${PORT}`);
+  console.log(`🔗 Endpoints: http://localhost:${PORT}/api/feedback\n`);
+});
