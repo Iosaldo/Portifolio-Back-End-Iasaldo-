@@ -684,7 +684,7 @@ export default function ChallengePage() {
         return () => clearTimeout(timer);
       }
     }
-  }, [quizCompleted, score, restartQuiz]);
+  }, [quizCompleted, score, restartQuiz, setProgress]);
 
   if (quizCompleted) {
     const finalProgress = (score / 100) * 100;
