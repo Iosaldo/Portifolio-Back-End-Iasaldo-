@@ -9,4 +9,8 @@ app.use(express.json());
 
 app.use("/api/feedback", feedbackRoutes);
 
+app.get("/", (_req, res) => {
+  res.send("Portfolio API is up. Use /api/feedback for feedback endpoints.");
+});
+
 export default app;
