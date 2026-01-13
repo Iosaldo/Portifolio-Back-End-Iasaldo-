@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useProgressStore } from "@/store/useProgressStore";
 import useLanguageStore from "@/store/useLanguageStore";
 import { useRouter } from "next/navigation";
@@ -616,7 +616,8 @@ export default function ChallengePage() {
     // Atualiza o progresso baseado no score
     const newProgress = (score / 100) * 100;
     setProgress(newProgress);
-  }, [score, setProgress]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [score]);
 
   useEffect(() => {
     // Seleciona novas 10 perguntas aleatórias quando o idioma mudar
@@ -654,7 +655,7 @@ export default function ChallengePage() {
     }, 2000);
   };
 
-  const restartQuiz = () => {
+  const restartQuiz = useCallback(() => {
     setCurrentQuestion(0);
     setScore(0);
     setSelectedAnswer(null);
@@ -663,7 +664,7 @@ export default function ChallengePage() {
     setProgress(0);
     // Seleciona novas 10 perguntas aleatórias do pool
     setShuffledQuestions(getRandomQuestions(QUESTIONS[language], 10));
-  };
+  }, [language, setProgress]);
 
   const goToPortfolio = () => {
     router.push("/");
@@ -683,7 +684,7 @@ export default function ChallengePage() {
         return () => clearTimeout(timer);
       }
     }
-  }, [quizCompleted, score, setProgress, restartQuiz]);
+  }, [quizCompleted, score, restartQuiz]);
 
   if (quizCompleted) {
     const finalProgress = (score / 100) * 100;
