@@ -12,3 +12,8 @@ export async function getFeedbacks(req, res) {
   const list = await service.getAll();
   res.json(list);
 }
+
+export async function deleteFeedback(req, res) {
+  await service.remove(req.params.id);
+  res.status(204).end();
+}

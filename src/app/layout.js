@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useProgressStore } from "@/store/useProgressStore";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       <body>
         <DashboardHeader />
         <main style={{ paddingTop: "80px" }}>{children}</main>
+        <Footer />
       </body>
     </html>
   );

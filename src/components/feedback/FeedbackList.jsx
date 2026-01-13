@@ -6,10 +6,20 @@ export default function FeedbackList() {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/feedback")
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/feedback")
       .then((res) => res.json())
-      .then((data) => setFeedbacks(data));
+      .then((data) => setFeedbacks(data))
+      .catch((err) => {
+        console.error(err);
+        // Silenciosamente falha - não mostra feedbacks se API não disponível
+        setFeedbacks([]);
+      });
   }, []);
+
+  // Só renderiza se houver feedbacks
+  if (feedbacks.length === 0) {
+    return null;
+  }
 
   return (
     <StyledWrapper className="feedback-list">

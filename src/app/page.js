@@ -31,6 +31,7 @@ export default function Home() {
       <Hero />
       <Projects />
       <Skills />
+      <div style={{ marginTop: "80px" }}></div> {/* Espaçamento adicionado */}
       <Education />
       <About />
       {progress === 100 && <FeedbackSection />}

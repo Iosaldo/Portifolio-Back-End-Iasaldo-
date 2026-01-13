@@ -15,3 +15,7 @@ export async function getAll() {
   );
   return result.rows;
 }
+
+export async function remove(id) {
+  await db.query("DELETE FROM feedback WHERE id = $1", [id]);
+}

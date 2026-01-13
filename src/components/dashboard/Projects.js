@@ -9,13 +9,17 @@ import "../../app/home.css";
 const TRANSLATIONS = {
   pt: {
     title: "Projetos",
-    description:
+    quickPostDescription:
       "API minimalista para posts rápidos, endpoints REST simples e pronta para deploy.",
+    aderitoDescription:
+      "Plataforma simples e atrativa para ajudar pessoas (especialmente lusófonas) a aprender inglês com apoio do professor Aderito.",
   },
   en: {
     title: "Projects",
-    description:
+    quickPostDescription:
       "Minimalist API for quick posts, simple REST endpoints and ready for deployment.",
+    aderitoDescription:
+      "Simple and attractive platform to help people (especially Portuguese speakers) learn English with support from teacher Aderito.",
   },
 };
 
@@ -55,7 +59,9 @@ export default function Projects() {
                   />
                 </div>
                 <div className="project-card-title">Quick-Post API</div>
-                <div className="project-card-subtitle">{t.description}</div>
+                <div className="project-card-subtitle">
+                  {t.quickPostDescription}
+                </div>
                 <hr className="project-card-divider" />
                 <div className="project-card-footer">
                   <div className="project-card-price">Node,Express</div>
@@ -87,18 +93,20 @@ export default function Projects() {
               <div className="project-card-modern">
                 <div className="project-card-img">
                   <Image
-                    src="/API.jpg"
-                    alt="Quick-Post API"
+                    src="/aderito-projecto.jpg"
+                    alt="Aderito Project"
                     width={400}
                     height={300}
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <div className="project-card-title">Quick-Post API</div>
-                <div className="project-card-subtitle">{t.description}</div>
+                <div className="project-card-title">Aderito Project</div>
+                <div className="project-card-subtitle">
+                  {t.aderitoDescription}
+                </div>
                 <hr className="project-card-divider" />
                 <div className="project-card-footer">
-                  <div className="project-card-price"></div>
+                  <div className="project-card-price">React, Next.js</div>
                   <a
                     className="project-card-btn"
                     aria-label="Ver Quick-Post API no GitHub"
