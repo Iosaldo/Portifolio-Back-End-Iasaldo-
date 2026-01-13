@@ -2,6 +2,7 @@
   "name": "feedback-api",
   "version": "1.0.0",
   "description": "API de feedback para portfólio",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
