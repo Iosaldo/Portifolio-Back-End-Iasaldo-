@@ -6,11 +6,12 @@ export default function FeedbackList() {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    fetch("/api/feedback")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+    fetch(`${apiUrl}/api/feedback`)
       .then((res) => res.json())
       .then((data) => setFeedbacks(data))
       .catch((err) => {
-        console.error(err);
+        console.error("Erro ao carregar feedbacks:", err);
         // Silenciosamente falha - não mostra feedbacks se API não disponível
         setFeedbacks([]);
       });

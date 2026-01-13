@@ -12,7 +12,8 @@ export default function FeedbackForm() {
     e.preventDefault();
     setLoading(true);
 
-    await fetch("/api/feedback", {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+    await fetch(`${apiUrl}/api/feedback`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, message, rating }),
