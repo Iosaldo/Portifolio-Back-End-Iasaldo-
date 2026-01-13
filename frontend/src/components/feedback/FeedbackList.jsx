@@ -6,7 +6,7 @@ export default function FeedbackList() {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/feedback")
+    fetch("/api/feedback")
       .then((res) => res.json())
       .then((data) => setFeedbacks(data))
       .catch((err) => {

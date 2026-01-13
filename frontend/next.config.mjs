@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    NEXT_PUBLIC_API_URL:
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
-  },
+  // NEXT_PUBLIC_API_URL removed - using Next.js API Routes instead
+  // API routes are accessed via relative paths: /api/feedback
 };
 
 export default nextConfig;

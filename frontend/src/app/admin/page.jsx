@@ -6,13 +6,13 @@ export default function AdminPage() {
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/feedback")
+    fetch("/api/feedback")
       .then((res) => res.json())
       .then(setFeedbacks);
   }, []);
 
   async function handleDelete(id) {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/feedback/${id}`, {
+    await fetch(`/api/feedback/${id}`, {
       method: "DELETE",
     });
 
