@@ -1,0 +1,30 @@
+{
+  "name": "feedback-api",
+  "version": "1.0.0",
+  "description": "API de feedback para portfólio",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "feedback",
+    "api",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "mongodb": "^7.0.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
