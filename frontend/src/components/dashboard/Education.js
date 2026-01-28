@@ -8,6 +8,7 @@ import "../../app/home.css";
 const TRANSLATIONS = {
   pt: {
     title: "Educação",
+    certificatesTitle: "Certificados",
     codecademy: "Codecademy - Engenheiro Back-End",
     inProgress: "em andamento",
     ifac: "IFAC - Tecnologia da Informação",
@@ -17,6 +18,7 @@ const TRANSLATIONS = {
   },
   en: {
     title: "Education",
+    certificatesTitle: "Certificates",
     codecademy: "Codecademy - Back-End Engineer",
     inProgress: "in progress",
     ifac: "IFAC - Information Technology",
@@ -26,9 +28,47 @@ const TRANSLATIONS = {
   },
 };
 
+const CERTIFICATES = {
+  pt: [
+    {
+      id: 1,
+      title: "JavaScript Intermediário",
+      institution: "Codecademy",
+      date: "2024",
+      link: "#",
+    },
+    {
+      id: 2,
+      title: "Backend com Node.js",
+      institution: "Codecademy",
+      date: "2024",
+      link: "#",
+    },
+    // Adicione mais certificados aqui
+  ],
+  en: [
+    {
+      id: 1,
+      title: "Intermediate JavaScript",
+      institution: "Codecademy",
+      date: "2024",
+      link: "#",
+    },
+    {
+      id: 2,
+      title: "Backend with Node.js",
+      institution: "Codecademy",
+      date: "2024",
+      link: "#",
+    },
+    // Add more certificates here
+  ],
+};
+
 export default function Education() {
   const { language } = useLanguageStore();
   const t = TRANSLATIONS[language];
+  const certificates = CERTIFICATES[language];
 
   return (
     <section id="education" className="education-section">
@@ -89,6 +129,45 @@ export default function Education() {
             </div>
           </AnimatedContent>
         </div>
+
+        {/* Seção de Certificados */}
+        <AnimatedContent
+          delay={1.2}
+          distance={100}
+          duration={0.6}
+          direction="vertical"
+        >
+          <div id="certificates" className="certificates-section">
+            <h3 className="certificates-title">{t.certificatesTitle}</h3>
+            <div className="certificates-grid">
+              {certificates.map((cert, index) => (
+                <AnimatedContent
+                  key={cert.id}
+                  delay={1.4 + index * 0.2}
+                  distance={50}
+                  duration={0.5}
+                  direction="horizontal"
+                >
+                  <div className="certificate-card">
+                    <h5 className="cert-title">{cert.title}</h5>
+                    <p className="cert-institution">{cert.institution}</p>
+                    <p className="cert-date">{cert.date}</p>
+                    {cert.link && cert.link !== "#" && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cert-link"
+                      >
+                        Ver certificado
+                      </a>
+                    )}
+                  </div>
+                </AnimatedContent>
+              ))}
+            </div>
+          </div>
+        </AnimatedContent>
       </div>
     </section>
   );
