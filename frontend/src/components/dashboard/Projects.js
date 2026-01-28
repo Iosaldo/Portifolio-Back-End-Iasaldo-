@@ -1,5 +1,5 @@
 "use client";
-
+import { gsap } from "gsap";
 import Image from "next/image";
 import useLanguageStore from "@/store/useLanguageStore";
 import AnimatedText from "@/components/AnimatedText";

@@ -29,7 +29,7 @@ export default function DashboardHeader() {
 
   return (
     <header className="dashboard-header">
-      <nav className={locked ? "locked" : ""}>
+      <nav className="dashboard-nav">
         <button onClick={() => scrollToSection("top")}>{t.home}</button>
         <button onClick={() => scrollToSection("projectos")}>
           {t.projects}

@@ -3,7 +3,7 @@
 import { useProgressStore } from "@/store/useProgressStore";
 import SiteLocked from "@/components/SiteLocked";
 import Image from "next/image";
-
+import { gsap } from "gsap";
 // teus componentes reais:
 import Hero from "@/components/dashboard/Hero";
 import Projects from "@/components/dashboard/Projects";
@@ -15,17 +15,6 @@ import FeedbackSection from "@/components/feedback/FeedbackSection";
 export default function Home() {
   const { progress } = useProgressStore();
 
-  // 🔒 MODO BLOQUEADO
-  if (progress < 100) {
-    return (
-      <>
-        <Hero />
-        <SiteLocked />
-      </>
-    );
-  }
-
-  // 🔓 MODO COMPLETO
   return (
     <>
       <Hero />
@@ -34,7 +23,7 @@ export default function Home() {
       <div style={{ marginTop: "80px" }}></div> {/* Espaçamento adicionado */}
       <Education />
       <About />
-      {progress === 100 && <FeedbackSection />}
+      <FeedbackSection />
     </>
   );
 }
