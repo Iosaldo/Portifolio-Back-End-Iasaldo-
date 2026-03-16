@@ -95,7 +95,7 @@ export default function Education() {
               <ul>
                 <li>REST APIs</li>
                 <li>Databases</li>
-                <li>Authentication & Authorization ({t.inProgress})</li>
+                <li>Authentication & Authorization</li>
                 <li>Backend fundamentals</li>
               </ul>
             </div>

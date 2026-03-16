@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useProgressStore } from "@/store/useProgressStore";
 import useLanguageStore from "@/store/useLanguageStore";
@@ -59,9 +60,9 @@ export default function DashboardHeader() {
               <button onClick={() => scrollToSection("certificates")}>
                 {t.certificates}
               </button>
-              <button onClick={() => (window.location.href = "/certificados")}>
+              <Link href="/certificados" className="dropdown-link">
                 {t.allCertificates}
-              </button>
+              </Link>
             </div>
           )}
         </div>

@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import FeedbackItem from "./FeedbackItem";
+import { getFeedbackApiUrl } from "@/lib/api";
 
 export default function FeedbackList() {
   const [feedbacks, setFeedbacks] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const abortController = new AbortController();
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+    const apiUrl = getFeedbackApiUrl();
 
     const fetchFeedbacks = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/feedback`, {
+        const response = await fetch(apiUrl, {
           signal: abortController.signal,
         });
+
+        if (!response.ok) {
+          throw new Error(`API error ${response.status}`);
+        }
+
         const data = await response.json();
         setFeedbacks(data);
+        setError("");
       } catch (err) {
-        // Ignora erros de cancelamento (quando componente é desmontado)
         if (err.name !== "AbortError") {
           console.error("Erro ao carregar feedbacks:", err);
+          setError(
+            "Não foi possível carregar os feedbacks. Verifique se o backend está rodando em http://localhost:3001 ou configure NEXT_PUBLIC_API_URL.",
+          );
         }
         setFeedbacks([]);
       }
@@ -27,11 +37,13 @@ export default function FeedbackList() {
 
     fetchFeedbacks();
 
-    // Cleanup: cancela a requisição quando o componente desmontar
     return () => abortController.abort();
   }, []);
 
-  // Só renderiza se houver feedbacks
+  if (error) {
+    return <p style={{ color: "#ff6b6b" }}>{error}</p>;
+  }
+
   if (feedbacks.length === 0) {
     return null;
   }

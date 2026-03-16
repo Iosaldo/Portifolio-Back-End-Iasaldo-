@@ -39,7 +39,7 @@ const AnimatedText = ({
     },
   };
 
-  const MotionComponent = motion[Component];
+  const MotionComponent = motion[Component] || motion.div;
 
   return (
     <MotionComponent

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { getFeedbackApiUrl } from "@/lib/api";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -7,23 +8,36 @@ export default function FeedbackForm() {
   const [rating, setRating] = useState(5);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-    await fetch(`${apiUrl}/api/feedback`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, message, rating }),
-    });
+    try {
+      const response = await fetch(getFeedbackApiUrl(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, message, rating }),
+      });
 
-    setName("");
-    setMessage("");
-    setRating(5);
-    setSuccess(true);
-    setLoading(false);
+      if (!response.ok) {
+        throw new Error(`Erro ao enviar feedback: ${response.status}`);
+      }
+
+      setName("");
+      setMessage("");
+      setRating(5);
+      setSuccess(true);
+    } catch (err) {
+      console.error("Erro ao enviar feedback:", err);
+      setError(
+        "Não foi possível enviar o feedback. Certifique-se de que o backend está rodando e tente novamente.",
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -73,6 +87,7 @@ export default function FeedbackForm() {
           {success && (
             <p className="success-message">✅ Obrigado pelo feedback!</p>
           )}
+          {error && <p className="error-message">⚠️ {error}</p>}
         </form>
       </div>
     </StyledWrapper>
@@ -87,7 +102,8 @@ const StyledWrapper = styled.div`
 
   .form-container {
     width: 400px;
-    background: linear-gradient(#212121, #212121) padding-box,
+    background:
+      linear-gradient(#212121, #212121) padding-box,
       linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
     padding: 32px 24px;
@@ -192,6 +208,12 @@ const StyledWrapper = styled.div`
 
   .success-message {
     color: #40c9ff;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .error-message {
+    color: #ff6b6b;
     font-size: 14px;
     margin-top: 10px;
   }

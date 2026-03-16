@@ -760,7 +760,7 @@ body {
   font-size: 20px;
   font-weight: 600;
   text-align: left;
-  color: #000000;
+  color: #ffffff;
 }
 
 .project-card-subtitle {
@@ -1328,4 +1328,131 @@ footer p {
 
 .social-link:nth-child(3):hover svg {
   color: rgba(234, 67, 53, 1);
+}
+
+/* Mobile improvements */
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 16px;
+    min-height: auto;
+  }
+  .hero {
+    align-items: center;
+    text-align: center;
+  }
+  .hero h1,
+  .hero-title,
+  .hero-badge {
+    text-align: center;
+  }
+  .hero-image {
+    width: 100%;
+    padding-right: 0;
+  }
+  .hero-oval {
+    width: min(90vw, 360px);
+    height: auto;
+  }
+  .hero-oval :where(img, .next-image, .next-image img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .section {
+    padding: 60px 16px 40px;
+  }
+
+  .section h3,
+  .projectos-left h3,
+  .certificates-title,
+  .dashboard-left h3,
+  .feedback-header h3 {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    letter-spacing: -1px;
+  }
+
+  .projectos-page,
+  .learning-focus-page,
+  .education-section,
+  .about-page,
+  .feedback-section {
+    padding: 20px 10px;
+    gap: 18px;
+  }
+
+  .projectos-grid {
+    gap: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .project-card-modern {
+    width: min(100%, 100%);
+    min-height: auto;
+    padding: 16px;
+  }
+  .project-card-img img,
+  .project-card-img .project-card-img-fill {
+    width: 100%;
+    height: auto;
+    min-height: 140px;
+  }
+
+  .skills-text-content {
+    gap: 20px;
+  }
+  .skill-category-text h4 {
+    font-size: 1.2rem;
+  }
+
+  .stack-card {
+    padding: 18px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 24px 12px;
+  }
+  .hero {
+    gap: 24px;
+  }
+  .hero h1,
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+  .intro-text,
+  .stack-content p,
+  .section p,
+  .project-card-subtitle,
+  .feedback-header p {
+    font-size: 0.95rem;
+  }
+  .projectos-left h3 {
+    font-size: 2.4rem;
+  }
+  .projectos-grid {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .project-card-modern {
+    width: 100%;
+  }
+  .dashboard-page,
+  .learning-focus-page {
+    flex-direction: column;
+  }
+  .dashboard-left h3 {
+    font-size: 2.5rem;
+  }
+  .feedback-header {
+    margin-bottom: 30px;
+  }
+  .feedback-header h3 {
+    font-size: 2.4rem;
+  }
 }
