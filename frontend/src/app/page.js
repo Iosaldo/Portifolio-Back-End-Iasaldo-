@@ -1,6 +1,5 @@
 "use client";
 
-import { useProgressStore } from "@/store/useProgressStore";
 import SiteLocked from "@/components/SiteLocked";
 import Image from "next/image";
 import { gsap } from "gsap";
@@ -10,11 +9,8 @@ import Projects from "@/components/dashboard/Projects";
 import Skills from "@/components/dashboard/Skills";
 import Education from "@/components/dashboard/Education";
 import About from "@/components/dashboard/About";
-import FeedbackSection from "@/components/feedback/FeedbackSection";
 
 export default function Home() {
-  const { progress } = useProgressStore();
-
   return (
     <>
       <Hero />
@@ -23,7 +19,6 @@ export default function Home() {
       <div style={{ marginTop: "80px" }}></div> {/* Espaçamento adicionado */}
       <Education />
       <About />
-      <FeedbackSection />
     </>
   );
 }
