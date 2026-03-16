@@ -100,7 +100,7 @@ export default function Projects() {
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <div className="project-card-title">Aderito Project</div>
+                <div className="project-card-title">Learn English</div>
                 <div className="project-card-subtitle">
                   {t.aderitoDescription}
                 </div>
@@ -110,7 +110,64 @@ export default function Projects() {
                   <a
                     className="project-card-btn"
                     aria-label="Ver Quick-Post API no GitHub"
-                    href="https://github.com/Iosaldo/Quick-Post-API.git"
+                    href=""
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/github-icon-2.svg"
+                      alt="GitHub"
+                      width={18}
+                      height={18}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </a>
+                </div>
+              </div>
+            </AnimatedContent>
+
+            <AnimatedContent
+              delay={0.9}
+              distance={100}
+              duration={0.6}
+              direction="horizontal"
+            >
+              <div className="project-card-modern">
+                <div className="project-card-img">
+                  <Image
+                    src="/avatar.jpg"
+                    alt="Portfolio"
+                    width={400}
+                    height={300}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className="project-card-title">Portfolio</div>
+                <div className="project-card-subtitle">
+                  Projeto pessoal para mostrar minhas habilidades e
+                  experiências, desenvolvido com Next.js e React.
+                </div>
+                <hr className="project-card-divider" />
+                <div className="project-card-footer">
+                      <a
+                    className="project-card-btn"
+                    aria-label="Ver Portfolio no website"
+                    href="https://iosaldo-portfolio.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/globe.svg"
+                      alt="Website"
+                      width={18}
+                      height={18}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </a>
+                  <a
+                    className="project-card-btn"
+                    aria-label="Ver Portfolio Backend no GitHub"
+                    href="https://github.com/Iosaldo/Portifolio-Back-End-Iasaldo-"
                     target="_blank"
                     rel="noreferrer"
                   >

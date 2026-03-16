@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { useState } from "react";
 import { useProgressStore } from "@/store/useProgressStore";
 import useLanguageStore from "@/store/useLanguageStore";
 import "./DashboardHeader.css";
@@ -10,6 +12,8 @@ const TRANSLATIONS = {
     projects: "Projetos",
     skills: "Habilidades",
     education: "Educação",
+    certificates: "Certificados",
+    allCertificates: "Ver todos os certificados",
     about: "Sobre Mim",
   },
   en: {
@@ -17,6 +21,8 @@ const TRANSLATIONS = {
     projects: "Projects",
     skills: "Skills",
     education: "Education",
+    certificates: "Certificates",
+    allCertificates: "View all certificates",
     about: "About Me",
   },
 };
@@ -24,6 +30,7 @@ const TRANSLATIONS = {
 export default function DashboardHeader() {
   const { progress } = useProgressStore();
   const { language, setLanguage } = useLanguageStore();
+  const [showEducationMenu, setShowEducationMenu] = useState(false);
   const locked = progress < 100;
   const t = TRANSLATIONS[language];
 
@@ -37,9 +44,28 @@ export default function DashboardHeader() {
         <button onClick={() => scrollToSection("learning-focus")}>
           {t.skills}
         </button>
-        <button onClick={() => scrollToSection("education")}>
-          {t.education}
-        </button>
+        <div
+          className="nav-dropdown"
+          onMouseEnter={() => setShowEducationMenu(true)}
+          onMouseLeave={() => setShowEducationMenu(false)}
+        >
+          <button onClick={() => scrollToSection("education")}>
+            {t.education} ▾
+          </button>
+          {showEducationMenu && (
+            <div className="dropdown-menu">
+              <button onClick={() => scrollToSection("education")}>
+                {t.education}
+              </button>
+              <button onClick={() => scrollToSection("certificates")}>
+                {t.certificates}
+              </button>
+              <Link href="/certificados" className="dropdown-link">
+                {t.allCertificates}
+              </Link>
+            </div>
+          )}
+        </div>
         <button onClick={() => scrollToSection("about")}>{t.about}</button>
       </nav>
 

@@ -41,4 +41,37 @@ const StyledSection = styled.section`
     font-size: 1.2rem;
     margin: 0;
   }
+
+  @media (max-width: 900px) {
+    padding: 56px 20px;
+
+    .feedback-header {
+      margin-bottom: 42px;
+    }
+
+    .feedback-header h3 {
+      font-size: 3rem;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .feedback-header p {
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 38px 12px;
+
+    .feedback-header h3 {
+      font-size: 2.2rem;
+    }
+
+    .feedback-header p {
+      font-size: 0.95rem;
+    }
+  }
 `;
