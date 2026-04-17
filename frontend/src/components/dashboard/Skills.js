@@ -59,6 +59,7 @@ export default function Skills() {
                 <ul>
                   <li>SQL</li>
                   <li>PostgreSQL</li>
+                  <li>MySQL</li>
                 </ul>
               </div>
             </AnimatedContent>
@@ -69,10 +70,27 @@ export default function Skills() {
               direction="horizontal"
             >
               <div className="skill-category-text">
+                <h4>Cloud / Deploy</h4>
+                <ul>
+                  <li>Vercel</li>
+                  <li>Render</li>
+                  <li>Basic CI/CD pipelines</li>
+                </ul>
+              </div>
+            </AnimatedContent>
+            <AnimatedContent
+              delay={1.2}
+              distance={100}
+              duration={0.6}
+              direction="horizontal"
+            >
+              <div className="skill-category-text">
                 <h4>Tools</h4>
                 <ul>
                   <li>Git</li>
                   <li>GitHub</li>
+                  <li>Postman</li>
+                  <li>Vs Code</li>
                 </ul>
               </div>
             </AnimatedContent>

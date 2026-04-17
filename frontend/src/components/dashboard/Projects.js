@@ -13,6 +13,8 @@ const TRANSLATIONS = {
       "API minimalista para posts rápidos, endpoints REST simples e pronta para deploy.",
     aderitoDescription:
       "Plataforma simples e atrativa para ajudar pessoas (especialmente lusófonas) a aprender inglês com apoio do professor Aderito.",
+    certificatesDescription:
+      "Sistema de gestão de turnos para restaurantes.",
   },
   en: {
     title: "Projects",
@@ -20,6 +22,8 @@ const TRANSLATIONS = {
       "Minimalist API for quick posts, simple REST endpoints and ready for deployment.",
     aderitoDescription:
       "Simple and attractive platform to help people (especially Portuguese speakers) learn English with support from teacher Aderito.",
+    certificatesDescription:
+      "Shift management system for restaurants.",
   },
 };
 
@@ -64,22 +68,30 @@ export default function Projects() {
                 </div>
                 <hr className="project-card-divider" />
                 <div className="project-card-footer">
-                  <div className="project-card-price">Node,Express</div>
-                  <a
-                    className="project-card-btn"
-                    aria-label="Ver Quick-Post API no GitHub"
-                    href="https://github.com/Iosaldo/Quick-Post-API.git"
-                    target="_blank"
-                    rel="noreferrer"
+                  <div className="project-card-price">Node, Express</div>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "0.4rem",
+                      alignItems: "center",
+                    }}
                   >
-                    <Image
-                      src="/github-icon-2.svg"
-                      alt="GitHub"
-                      width={18}
-                      height={18}
-                      style={{ objectFit: "contain" }}
-                    />
-                  </a>
+                    <a
+                      className="project-card-btn"
+                      aria-label="Ver Quick-Post API no GitHub"
+                      href="https://github.com/Iosaldo/Quick-Post-API.git"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/github-icon-2.svg"
+                        alt="GitHub"
+                        width={18}
+                        height={18}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
             </AnimatedContent>
@@ -149,10 +161,10 @@ export default function Projects() {
                 </div>
                 <hr className="project-card-divider" />
                 <div className="project-card-footer">
-                      <a
+                  <a
                     className="project-card-btn"
                     aria-label="Ver Portfolio no website"
-                    href="https://iosaldo-portfolio.vercel.app/"
+                    href="https://portifolio-iyosaldo.vercel.app/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -174,6 +186,48 @@ export default function Projects() {
                     <Image
                       src="/github-icon-2.svg"
                       alt="GitHub"
+                      width={18}
+                      height={18}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </a>
+                </div>
+              </div>
+            </AnimatedContent>
+
+            <AnimatedContent
+              delay={1.2}
+              distance={100}
+              duration={0.6}
+              direction="horizontal"
+            >
+              <div className="project-card-modern">
+                <div className="project-card-img">
+                  <Image
+                    src="/file.svg"
+                    alt="Certificates"
+                    width={400}
+                    height={300}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className="project-card-title">ShiftSync —Gestão de Turnos</div>
+                <div className="project-card-subtitle">
+                  {t.certificatesDescription}
+                </div>
+                <hr className="project-card-divider" />
+                <div className="project-card-footer">
+                  <div className="project-card-price">Next.js, CSS</div>
+                  <a
+                    className="project-card-btn"
+                    aria-label="Ver Certificados"
+                    href="/certificados"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src="/globe.svg"
+                      alt="Website"
                       width={18}
                       height={18}
                       style={{ objectFit: "contain" }}

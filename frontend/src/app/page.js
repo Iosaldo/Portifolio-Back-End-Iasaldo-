@@ -28,14 +28,13 @@ function OldHero() {
     <div className="container">
       <div className="hero">
         <h1 className="hero-title">Iasaldo</h1>
-        <span className="hero-badge">Back-End Developer Student</span>
+        <span className="hero-badge">Junior Back-End Developer</span>
         <div className="intro-block">
           <p className="intro-text">
             Building REST APIs with Node.js, Express, and SQL through hands-on
             projects.
           </p>
-          <a href="#projectos" className="minimal-btn">
-            View Projects
+          <a href="#projectos" className="minimal-btn">Projects<span aria-hidden="true"></span>
           </a>
         </div>
       </div>
@@ -50,7 +49,7 @@ function OldHero() {
               objectFit: "cover",
               filter: "grayscale(1)",
               background: "#111",
-              display: "block",
+              display: "left",
               transform: "rotate(-12deg)",
             }}
             priority
@@ -245,10 +244,10 @@ function AboutSection() {
                 <div className="stack-card">
                   <div className="stack-content">
                     <p>
-                      Desenvolvedor Back-End em formação, focado na construção
-                      de APIs REST bem estruturadas e escaláveis. Atualmente em
-                      busca de uma oportunidade de estágio para evoluir em
-                      ambiente profissional.
+                      Desenvolvedor Back-End em formação, estou trabalhando na
+                      construção de APIs REST bem estruturadas e escaláveis.
+                      Atualmente desenvolvendo projetos pessoais para aprimorar
+                      minhas habilidades.
                     </p>
                     <div className="social-links">
                       <a
