@@ -843,6 +843,28 @@ body {
   fill: var(--main-focus);
 }
 
+.project-card-btn.more-cert {
+  padding: 0 10px;
+  border-color: #9ca3af;
+  color: #f3f4f6;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.project-card-btn.more-cert:hover {
+  border-color: #e2e8f0;
+  color: #fff;
+}
+
+.project-card-btn.more-cert svg {
+  display: none;
+}
+
 .project-card-btn:active {
   transform: translateY(2px);
 }

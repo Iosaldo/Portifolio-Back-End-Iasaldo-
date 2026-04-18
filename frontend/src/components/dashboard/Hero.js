@@ -3,21 +3,22 @@
 import Image from "next/image";
 import useLanguageStore from "@/store/useLanguageStore";
 import AnimatedText from "@/components/AnimatedText";
+import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import "../../app/home.css";
 
 const TRANSLATIONS = {
   pt: {
-    badge: "Estudante de Desenvolvedor Back-End",
+    badge: "Junior Back-End Developer",
     intro:
-      "Construindo APIs REST com Node.js, Express e SQL através de projetos práticos.",
-    viewProjects: "Ver Projetos",
+      "Trabalhando na construção de APIs REST com Node.js, Express e SQL através de projetos práticos.",
+    viewProjects: "Projetos",
   },
   en: {
-    badge: "Back-End Developer Student",
+    badge: "Junior Back-End Developer",
     intro:
-      "Building REST APIs with Node.js, Express, and SQL through hands-on projects.",
-    viewProjects: "View Projects",
+      "Working on building REST APIs with Node.js, Express and SQL through practical projects.",
+    viewProjects: "Projects",
   },
 };
 
@@ -44,9 +45,15 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.6 }}
         >
           <p className="intro-text">{t.intro}</p>
-          <a href="#projectos" className="minimal-btn">
+          <Button
+            type="button"
+            onClick={() => {
+              const section = document.getElementById("projectos");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             {t.viewProjects}
-          </a>
+          </Button>
         </motion.div>
       </div>
       <div className="hero-image">

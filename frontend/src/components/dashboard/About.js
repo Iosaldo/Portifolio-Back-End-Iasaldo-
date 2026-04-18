@@ -9,7 +9,7 @@ const TRANSLATIONS = {
   pt: {
     title: "Sobre Mim",
     description:
-      "Desenvolvedor Back-End em formação, focado na construção de APIs REST bem estruturadas e escaláveis. Atualmente em busca de uma oportunidade de estágio para evoluir em ambiente profissional.",
+      "Desenvolvedor Back-End em formação, estou trabalhando na construção de APIs REST bem estruturadas e escaláveis. Atualmente desenvolvendo projetos pessoais para aprimorar minhas habilidades.",
   },
   en: {
     title: "About Me",

@@ -118,6 +118,79 @@
   margin-bottom: 20px;
 }
 
+..hero-badge {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-title,
+.hero-badge,
+.intro-text {
+  text-align: center;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 99px;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: #eff0f1;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.6rem;
+  min-width: 100px;
+  max-width: 180px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+  flex-direction: row;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: #fff;
+}
+
+.hero-button::before {
+  content: "";
+  display: none;
+}
+
+.hero-button-label,
+.hero-button-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-button-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  color: inherit;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+  transform: rotate(0deg);
+}
+
+.hero-button:hover .hero-button-icon {
+  transform: rotate(90deg);
+}
+
 .cta-outline {
   background-color: #1f2937;
   color: #fff;
