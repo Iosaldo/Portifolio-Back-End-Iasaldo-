@@ -753,7 +753,7 @@ body {
 }
 .projectos-grid {
   display: grid;
-  grid-template-columns: repeat(4, 230px);
+  grid-template-columns: repeat(5, 230px);
   gap: 56px;
   justify-content: center;
   align-items: start;
@@ -909,24 +909,25 @@ body {
   transform: scale(0.95) rotateZ(1.7deg);
 }
 
-.project-card-modern:last-child {
-  justify-content: flex-end;
-}
-
 .project-card-img {
   transition: all 0.5s;
-  display: flex;
-  justify-content: center;
+  display: block;
+  margin: -20px -20px 6px;
+  overflow: hidden;
+  border-radius: 16px 16px 12px 12px;
+  background: #05080c;
+  aspect-ratio: 16 / 9;
 }
 
 .project-card-img img,
 .project-card-img .project-card-img-fill {
-  width: 100px;
-  height: 100px;
-  border: 2px solid var(--main-color);
-  border-radius: 14px;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
   background: #111;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
@@ -1050,7 +1051,7 @@ body {
 .project-dialog-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 4000;
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.72);
@@ -1065,8 +1066,36 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 24px;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem;
   color: #f5f5f5;
+}
+
+.project-dialog-hero {
+  position: relative;
+  margin: 0 -1.5rem 1.25rem;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+  background: #05080c;
+  aspect-ratio: 1584 / 396;
+}
+
+.project-dialog-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.project-dialog-hero--page {
+  aspect-ratio: 16 / 9;
+}
+
+.project-dialog-hero .project-dialog-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1;
 }
 
 .project-dialog-header {
@@ -1736,8 +1765,7 @@ footer p {
   .learning-focus-left h3,
   .edu-title,
   .certificates-title,
-  .dashboard-left h3,
-  .feedback-header h3 {
+  .dashboard-left h3 {
     font-size: clamp(2.2rem, 8vw, 3rem);
     letter-spacing: -1px;
   }
@@ -1745,8 +1773,7 @@ footer p {
   .projectos-page,
   .learning-focus-page,
   .edu-formation-page,
-  .about-page,
-  .feedback-section {
+  .about-page {
     padding: 20px 10px;
     gap: 18px;
   }
@@ -1765,11 +1792,14 @@ footer p {
     min-height: auto;
     padding: 16px;
   }
+  .project-card-img {
+    margin: -16px -16px 6px;
+  }
   .project-card-img img,
   .project-card-img .project-card-img-fill {
-    width: 100px;
-    height: 100px;
-    min-height: 100px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
   }
 
   .skills-text-content {
@@ -1819,8 +1849,7 @@ footer p {
   .intro-text,
   .stack-content p,
   .section p,
-  .project-card-subtitle,
-  .feedback-header p {
+  .project-card-subtitle {
     font-size: 0.95rem;
   }
   .projectos-left h3 {
@@ -1859,11 +1888,5 @@ footer p {
   }
   .dashboard-left h3 {
     font-size: 2.5rem;
-  }
-  .feedback-header {
-    margin-bottom: 30px;
-  }
-  .feedback-header h3 {
-    font-size: 2.4rem;
   }
 }
