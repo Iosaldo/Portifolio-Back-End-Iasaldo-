@@ -11,13 +11,13 @@ const TRANSLATIONS = {
   pt: {
     badge: "Desenvolvedor Back-End Júnior",
     intro:
-      "Transformo regras de negócio em APIs que fazem trabalho de verdade: turnos, feedback e publicações. Recebo dados, valido, guardo e devolvo respostas claras com Node.js, Express e PostgreSQL.",
+      "Transformo regras de negócio em APIs que fazem trabalho de verdade: InsideMap, Rythora e publicações. Recebo dados, valido, guardo e devolvo respostas claras com Node.js, Express e PostgreSQL.",
     viewProjects: "Ver projetos",
   },
   en: {
     badge: "Junior Back-End Developer",
     intro:
-      "I turn business rules into APIs that do real work: shifts, feedback and posts. I receive data, validate it, store it and return clear responses with Node.js, Express and PostgreSQL.",
+      "I turn business rules into APIs that do real work: InsideMap, Rythora and posts. I receive data, validate it, store it and return clear responses with Node.js, Express and PostgreSQL.",
     viewProjects: "View projects",
   },
 };

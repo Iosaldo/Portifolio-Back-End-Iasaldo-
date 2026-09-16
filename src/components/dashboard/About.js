@@ -15,14 +15,14 @@ const TRANSLATIONS = {
   pt: {
     title: "Sobre mim",
     description:
-      "Tenho construído projetos pequenos, mas completos: gestão de turnos, sistema de feedback e uma API de publicações. O que mais me interessa no back-end é transformar regras de negócio em endpoints simples de manter, com validação, base de dados e documentação clara. O próximo passo é trabalhar com uma equipa, ler código de produção e assumir tarefas de API, correção de bugs e integração.",
+      "Tenho construído projetos pequenos, mas completos: a InsideMap, a Rythora para gestão de turnos, e uma API de publicações. O que mais me interessa no back-end é transformar regras de negócio em endpoints simples de manter, com validação, base de dados e documentação clara. O próximo passo é trabalhar com uma equipa, ler código de produção e assumir tarefas de API, correção de bugs e integração.",
     resume: "Resume",
     cv: "CV",
   },
   en: {
     title: "About Me",
     description:
-      "I have been building small but complete projects: shift management, a feedback system and a posts API. What I enjoy in backend work is turning business rules into maintainable endpoints with validation, database persistence and clear documentation. My next step is working with a team, reading production code and taking ownership of API tasks, bug fixes and integrations.",
+      "I have been building small but complete projects: InsideMap, Rythora for shift management, and a posts API. What I enjoy in backend work is turning business rules into maintainable endpoints with validation, database persistence and clear documentation. My next step is working with a team, reading production code and taking ownership of API tasks, bug fixes and integrations.",
     resume: "Resume",
     cv: "CV",
   },

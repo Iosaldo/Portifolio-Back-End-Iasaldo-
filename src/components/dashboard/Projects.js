@@ -5,7 +5,8 @@ import AnimatedText from "@/components/AnimatedText";
 import useLanguageStore from "@/store/useLanguageStore";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import "../../app/home.css";
 
 const TRANSLATIONS = {
@@ -17,17 +18,31 @@ const TRANSLATIONS = {
     roleLabel: "Meu papel",
     featuresLabel: "Destaques técnicos",
     statusLabel: "Estado",
-    shiftSyncTitle: "ShiftSync - Gestão de Turnos",
-    shiftSyncDescription:
-      "Sistema para restaurantes organizarem escalas, equipas, ausências e trocas de turno sem depender de folhas soltas.",
-    shiftSyncDetails: {
-      role: "Planeamento da arquitetura, modelação das regras de negócio, organização das telas e integração do fluxo de gestão.",
+    insideMapTitle: "InsideMap",
+    insideMapDescription:
+      "Plataforma de process intelligence: consola Next.js e API NestJS para mapear processos, detetar riscos e autenticar utilizadores.",
+    insideMapDetails: {
+      role: "Desenvolvimento full-stack da consola, da API e dos fluxos de mapeamento de processos, deteção de risco e autenticação.",
       status:
-        "Protótipo funcional publicado; próximo passo é abrir documentação técnica e melhorar testes/API docs.",
+        "Projeto em curso; stack Next.js, NestJS, PostgreSQL e Redis.",
       features: [
-        "Fluxo para gestão de turnos, trocas e ausências",
-        "Estrutura preparada para autenticação JWT e perfis de acesso",
-        "Interface responsiva para operação diária",
+        "Mapeamento de processos na consola",
+        "Deteção de riscos no fluxo operacional",
+        "API REST NestJS com autenticação",
+        "Persistência em PostgreSQL e cache Redis",
+      ],
+    },
+    rythoraTitle: "Rythora - Gestão de Turnos",
+    rythoraDescription:
+      "Aplicação para criar escalas, gerir equipas e acompanhar a operação de organizações que trabalham por turnos.",
+    rythoraDetails: {
+      role: "Arquitetura full-stack: API Express multi-tenant, regras de negócio, autenticação e integração com o frontend.",
+      status:
+        "Projeto publicado; frontend na Vercel e API no Render, com PostgreSQL.",
+      features: [
+        "Escalas, trocas e ausências com fluxos de aprovação",
+        "Autenticação JWT e isolamento por organização",
+        "API REST com PostgreSQL, validação e relatórios",
         "Deploy publicado para validação do produto",
       ],
     },
@@ -44,7 +59,7 @@ const TRANSLATIONS = {
         "Arquitetura em camadas preparada para deploy",
       ],
     },
-    portfolioTitle: "Portfólio & Sistema de Feedback",
+    portfolioTitle: "Portfólio",
     portfolioDescription:
       "Portfólio pensado como vitrine técnica: projetos back-end, currículo, contacto e links que ajudam a avaliar código rapidamente.",
     portfolioDetails: {
@@ -82,17 +97,31 @@ const TRANSLATIONS = {
     roleLabel: "My role",
     featuresLabel: "Technical highlights",
     statusLabel: "Status",
-    shiftSyncTitle: "ShiftSync - Shift Management",
-    shiftSyncDescription:
-      "Restaurant system for organizing schedules, teams, absences and shift swaps without relying on scattered spreadsheets.",
-    shiftSyncDetails: {
-      role: "Planned the architecture, modeled business rules, organized the main screens and integrated the management flow.",
+    insideMapTitle: "InsideMap",
+    insideMapDescription:
+      "Process intelligence platform: a Next.js console and NestJS API for process mapping, risk detection and authentication.",
+    insideMapDetails: {
+      role: "Full-stack work on the console, API, process mapping, risk detection and authentication flows.",
       status:
-        "Functional prototype published; next step is public technical documentation and stronger tests/API docs.",
+        "Active project; stack Next.js, NestJS, PostgreSQL and Redis.",
       features: [
-        "Workflow for shift scheduling, swaps and absences",
-        "Structure prepared for JWT authentication and role-based access",
-        "Responsive interface for daily operations",
+        "Process mapping in the console",
+        "Risk detection in the operational flow",
+        "NestJS REST API with authentication",
+        "PostgreSQL persistence and Redis cache",
+      ],
+    },
+    rythoraTitle: "Rythora - Shift Management",
+    rythoraDescription:
+      "Web app for building schedules, managing teams and running day-to-day operations in shift-based organizations.",
+    rythoraDetails: {
+      role: "Full-stack architecture: multi-tenant Express API, business rules, authentication and frontend integration.",
+      status:
+        "Published project; frontend on Vercel and API on Render, with PostgreSQL.",
+      features: [
+        "Schedules, swaps and absences with approval flows",
+        "JWT authentication and organization-level isolation",
+        "REST API with PostgreSQL, validation and reports",
         "Live deployment for product validation",
       ],
     },
@@ -109,7 +138,7 @@ const TRANSLATIONS = {
         "Layered architecture prepared for deployment",
       ],
     },
-    portfolioTitle: "Portfolio & Feedback System",
+    portfolioTitle: "Portfolio",
     portfolioDescription:
       "Technical portfolio built to make code review easier: back-end projects, resume access, contact routes and useful links.",
     portfolioDetails: {
@@ -152,70 +181,18 @@ const CARD_TRANSITION = { type: "spring", stiffness: 260, damping: 24 };
 export default function Projects() {
   const { language } = useLanguageStore();
   const [openProjectId, setOpenProjectId] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
   const t = TRANSLATIONS[language];
   const projects = getProjects(t);
   const activeProject = projects.find(
     (project) => project.id === openProjectId,
   );
 
-  return (
-    <section id="projectos" className="section">
-      <div className="projectos-page">
-        <AnimatedContent
-          direction="horizontal"
-          reverse={true}
-          distance={80}
-          duration={1}
-        >
-          <div className="projectos-left">
-            <AnimatedText text={t.title} as="h3" />
-          </div>
-        </AnimatedContent>
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-        <div className="projectos-right">
-          <div className="projectos-grid">
-            {projects.map((project, index) => (
-              <AnimatedContent
-                key={project.id}
-                delay={0.3 + index * 0.3}
-                distance={100}
-                duration={0.6}
-                direction="horizontal"
-              >
-                <motion.article
-                  className="project-card-modern"
-                  layout
-                  variants={CARD_MOTION}
-                  initial="rest"
-                  whileHover="hover"
-                  whileTap="tap"
-                  transition={CARD_TRANSITION}
-                  onClick={() => setOpenProjectId(project.id)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="project-card-img">
-                    <Image
-                      src={project.image}
-                      alt={project.imageAlt}
-                      width={400}
-                      height={300}
-                      sizes={IMAGE_SIZES}
-                      style={{ objectFit: "cover" }}
-                    />
-                  </div>
-
-                  <div className="project-card-title">{project.title}</div>
-                  <div className="project-card-subtitle">
-                    {project.description}
-                  </div>
-
-                  <hr className="project-card-divider" />
-                </motion.article>
-              </AnimatedContent>
-            ))}
-          </div>
-        </div>
-
+  const dialog = (
         <AnimatePresence>
           {activeProject && (
             <motion.div
@@ -237,13 +214,18 @@ export default function Projects() {
                 aria-labelledby={`project-dialog-title-${activeProject.id}`}
                 onClick={(event) => event.stopPropagation()}
               >
-                <div className="project-dialog-header">
-                  <div>
-                    <h3 id={`project-dialog-title-${activeProject.id}`}>
-                      {activeProject.title}
-                    </h3>
-                    <p>{activeProject.description}</p>
-                  </div>
+                <div className="project-dialog-hero project-dialog-hero--page">
+                  <Image
+                    src={activeProject.image}
+                    alt={activeProject.imageAlt}
+                    width={1200}
+                    height={520}
+                    unoptimized={activeProject.image.endsWith(".svg")}
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "center top",
+                    }}
+                  />
                   <button
                     type="button"
                     className="project-dialog-close"
@@ -252,6 +234,15 @@ export default function Projects() {
                   >
                     ×
                   </button>
+                </div>
+
+                <div className="project-dialog-header">
+                  <div>
+                    <h3 id={`project-dialog-title-${activeProject.id}`}>
+                      {activeProject.title}
+                    </h3>
+                    <p>{activeProject.description}</p>
+                  </div>
                 </div>
 
                 <div className="project-dialog-body">
@@ -325,7 +316,71 @@ export default function Projects() {
             </motion.div>
           )}
         </AnimatePresence>
+  );
+
+  return (
+    <section id="projectos" className="section">
+      <div className="projectos-page">
+        <AnimatedContent
+          direction="horizontal"
+          reverse={true}
+          distance={80}
+          duration={1}
+        >
+          <div className="projectos-left">
+            <AnimatedText text={t.title} as="h3" />
+          </div>
+        </AnimatedContent>
+
+        <div className="projectos-right">
+          <div className="projectos-grid">
+            {projects.map((project, index) => (
+              <AnimatedContent
+                key={project.id}
+                delay={0.3 + index * 0.3}
+                distance={100}
+                duration={0.6}
+                direction="horizontal"
+              >
+                <motion.article
+                  className="project-card-modern"
+                  layout
+                  variants={CARD_MOTION}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap="tap"
+                  transition={CARD_TRANSITION}
+                  onClick={() => setOpenProjectId(project.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className="project-card-img">
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      width={400}
+                      height={300}
+                      sizes={IMAGE_SIZES}
+                      unoptimized={project.image.endsWith(".svg")}
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center top",
+                      }}
+                    />
+                  </div>
+
+                  <div className="project-card-title">{project.title}</div>
+                  <div className="project-card-subtitle">
+                    {project.description}
+                  </div>
+
+                  <hr className="project-card-divider" />
+                </motion.article>
+              </AnimatedContent>
+            ))}
+          </div>
+        </div>
       </div>
+      {isMounted ? createPortal(dialog, document.body) : null}
     </section>
   );
 }
@@ -342,21 +397,45 @@ function ProjectDetail({ label, children }) {
 function getProjects(t) {
   return [
     {
-      id: "shift-sync",
-      title: t.shiftSyncTitle,
-      description: t.shiftSyncDescription,
+      id: "insidemap",
+      title: t.insideMapTitle,
+      description: t.insideMapDescription,
+      stack: {
+        frontend: "Next.js, React",
+        backend: "NestJS, PostgreSQL, Redis",
+      },
+      details: t.insideMapDetails,
+      image: "/insidemap-project-cover.jpg",
+      imageAlt: t.insideMapTitle,
+      links: [
+        {
+          href: "https://insidemap.onrender.com/",
+          icon: "/globe.svg",
+          label: t.websiteLabel,
+        },
+      ],
+    },
+    {
+      id: "rythora",
+      title: t.rythoraTitle,
+      description: t.rythoraDescription,
       stack: {
         frontend: "Next.js, React",
         backend: "Node.js, Express, PostgreSQL",
       },
-      details: t.shiftSyncDetails,
-      image: "/shiftsync-project-cover.png",
-      imageAlt: t.shiftSyncTitle,
+      details: t.rythoraDetails,
+      image: "/rythora-banner.png",
+      imageAlt: t.rythoraTitle,
       links: [
         {
           href: "https://gestao-de-turnos.vercel.app",
           icon: "/globe.svg",
           label: t.websiteLabel,
+        },
+        {
+          href: "https://github.com/Iosaldo/Rythora",
+          icon: "/github-icon-2.svg",
+          label: t.githubLabel,
         },
       ],
     },

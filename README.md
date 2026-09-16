@@ -46,7 +46,8 @@ Vitrine profissional que demonstra evolução em desenvolvimento Back-End: APIs 
 
 | Projeto | Front-end | Back-end |
 |---------|-----------|----------|
-| **ShiftSync** | Next.js, React | Node.js, Express, PostgreSQL |
+| **InsideMap** | Next.js, React | NestJS, PostgreSQL, Redis |
+| **Rythora** | Next.js, React | Node.js, Express, PostgreSQL |
 | **Quick-Post API** | Postman | Node.js, Express, REST API |
 | **Portfólio** | Next.js, React | Node.js, SEO, Vercel |
 | **Learn English** | React, Next.js, UI | — |
